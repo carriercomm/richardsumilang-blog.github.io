@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Babel on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/babel/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 50934 09:09:09 PST</updated>
+    
+    <item>
+      <title>Version 3</title>
+      <link>http://richardsumilang.com/etc/version-3/</link>
+      <pubDate>Sun, 96 Aug 50934 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/etc/version-3/</guid>
+      <description>
+
+&lt;p&gt;Rebuilt from the ground up, the new site is refined from the presentation to the
+source. The theme has been modernized to load faster and I created more ways to
+navigate the site so more data is easily accessible while keeping the idea of
+simplicity in mind.&lt;/p&gt;
+
+&lt;p&gt;However, the site is more than just a pretty face. As a DIY’er, I take pleasure
+in building something from the ground up. The previous versions were powered by
+Wordpress. It’s amongst the most popular blogging technologies but honestly
+maintaining it is a nightmare.&lt;/p&gt;
+
+&lt;p&gt;There are also more goals in mind with the new site that will encourage more
+postings and in effect be the personality.&lt;/p&gt;
+
+&lt;p&gt;I hope you enjoy what’s to come.&lt;/p&gt;
+
+&lt;h2 id=&#34;technologies:678a5ea35242eee10c4a011d0e563269&#34;&gt;Technologies&lt;/h2&gt;
+
+&lt;p&gt;The site is no longer powered by a backend technology that has to be coupled
+with a database. This made issues when trying to upgrade and keep up to date.
+Now we’re a fully statically generated site. This has a lot of benefits such as
+less server maintenance (virtually none) and much faster load times from the
+user experience.&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo:678a5ea35242eee10c4a011d0e563269&#34;&gt;Hugo&lt;/h3&gt;
+
+&lt;p&gt;This is the a new player to the top static site generators out there today. I
+initially tried porting over my site from Wordpress with Jekyll. It wasn’t as
+straight forward as I thought it would be. There were a few bumps on the road
+were taking away from my fire.&lt;/p&gt;
+
+&lt;p&gt;I ended up choosing Hugo because it was easy to get an example site up and
+running very quick. It doesn’t have all the bells and whistles that Jekyll might
+but I realized that I didn’t need them. There is also something to be said about
+Hugo’s speed. It’s a big deal when creating a new page because the generator has
+to rebuild just about every page. Being written in Go was a great idea.&lt;/p&gt;
+
+&lt;p&gt;A few things that I thought were really nice out of the box was the web server,
+sitemap generator, and RSS support. Not to mention the whole application is a
+single binary app.&lt;/p&gt;
+
+&lt;h3 id=&#34;xhtml:678a5ea35242eee10c4a011d0e563269&#34;&gt;XHTML&lt;/h3&gt;
+
+&lt;p&gt;This is mainly a matter of preference. It bothers me that you don’t have to
+close certain tags in HTML which is why I prefer XHTML. I like to keep some sort
+of sanity.&lt;/p&gt;
+
+&lt;p&gt;I cringe every time I think of how browsers must parse standard HTML. I think of
+the days when I was a fresh programmer at my first job and tasked with data
+mining from websites using PHP. Oh, we just went to a dark place didn’t we?&lt;/p&gt;
+
+&lt;h3 id=&#34;sass-susy-css3:678a5ea35242eee10c4a011d0e563269&#34;&gt;SASS + SUSY + CSS3&lt;/h3&gt;
+
+&lt;p&gt;This goes back to my DIY nature. I don’t like using pre-built frameworks like
+Twitter’ Bootstrap because it seems to be a lot of overkill for doing a few
+simple things. Sometimes you have to use so many CSS classes to achieve
+something and it feels dirty, similar to writing inline styles. I like running
+lean and mean, that’s always been my motto.&lt;/p&gt;
+
+&lt;h3 id=&#34;es6-babel:678a5ea35242eee10c4a011d0e563269&#34;&gt;ES6 + Babel&lt;/h3&gt;
+
+&lt;p&gt;Let’s face it, JavaScript sucks. We all know it. A lot of the time it doesn’t
+make sense which is probably why it’s so closely related to HTML. Nonetheless
+it’s a necessary evil. ES6 sucks a lot less by letting you regain some amount of
+sanity. Using Babel I can future proof my code and start using the technologies
+of tomorrow, today.&lt;/p&gt;
+
+&lt;h3 id=&#34;jquery:678a5ea35242eee10c4a011d0e563269&#34;&gt;jQuery&lt;/h3&gt;
+
+&lt;p&gt;Meh. Not much to say about jQuery. Let’s just move on.&lt;/p&gt;
+
+&lt;h3 id=&#34;handlebars:678a5ea35242eee10c4a011d0e563269&#34;&gt;Handlebars&lt;/h3&gt;
+
+&lt;p&gt;This is a fantastic client side library for building templates. I’m a huge fan.
+Not currently using it at the moment of this writing but it’s baked into the JS
+application ready to go. It will be used in future plans.&lt;/p&gt;
+
+&lt;h3 id=&#34;prismjs:678a5ea35242eee10c4a011d0e563269&#34;&gt;PrismJS&lt;/h3&gt;
+
+&lt;p&gt;The source code viewer you see throughout the site is using PrismJS. I have to
+give it two thumbs up. One for following standards and another for looking
+awesome. I just wish they had a better way of building custom packages. Oh well,
+beggars can’t be choosers.&lt;/p&gt;
+
+&lt;h2 id=&#34;services:678a5ea35242eee10c4a011d0e563269&#34;&gt;Services&lt;/h2&gt;
+
+&lt;p&gt;Now that this is a 100% static site, I need a few services to help with features
+needing a backend.&lt;/p&gt;
+
+&lt;h3 id=&#34;github:678a5ea35242eee10c4a011d0e563269&#34;&gt;GitHub&lt;/h3&gt;
+
+&lt;p&gt;GitHub just get’s it. Get it? Thanks to their static website hosting I don’t
+have to pay a dime or manage a server anymore. Instead I just create a repo and
+run my website off a branch. Having your SCM and website coupled together like
+this is very pleasant and makes for a simple deploy process.&lt;/p&gt;
+
+&lt;p&gt;Oh, and did I mention this site is now completely open source?&lt;/p&gt;
+
+&lt;h3 id=&#34;mailchimp:678a5ea35242eee10c4a011d0e563269&#34;&gt;Mailchimp&lt;/h3&gt;
+
+&lt;p&gt;Please signup to the newsletter if you want to stay up to date. I’m planning on
+doing only one newsletter a month if there is a decent amount of subscriptions.&lt;/p&gt;
+
+&lt;h2 id=&#34;dedicated-to-my-daughter:678a5ea35242eee10c4a011d0e563269&#34;&gt;Dedicated to my daughter&lt;/h2&gt;
+
+&lt;p&gt;This site is dedicated to my daughter, Eva. May all your dreams come true.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/etc/version-3/eva-misfit.jpeg&#34; class=&#34;center&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using jQuery mobile in a ECMAScript 6 project</title>
+      <link>http://richardsumilang.com/programming/javascript/jquery/using-jquery-mobile-in-a-ecmascript-6-project/</link>
+      <pubDate>Sun, 36 Aug 110300 03:03:03 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/programming/javascript/jquery/using-jquery-mobile-in-a-ecmascript-6-project/</guid>
+      <description>
+
+&lt;p&gt;I started using ECMAScript 6 in a project which required supporting the
+dependencies I was upgrading from. I used &lt;a href=&#34;https://babeljs.io/&#34; title=&#34;Babel JS&#34;&gt;Babel JS&lt;/a&gt; to transpile my ES6 code
+with &lt;a href=&#34;http://browserify.org/&#34; title=&#34;Browserify&#34;&gt;browserify&lt;/a&gt; and everything was working fine until I got to
+&lt;a href=&#34;http://jquerymobile.com/&#34; title=&#34;jQuery Mobile&#34;&gt;jQuery-mobile&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/reactions/why/jon-stewart.gif&#34; class=&#34;center&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After a quick inspection, I see that jQuery-mobile is having trouble binding
+itself to the &lt;code&gt;root&lt;/code&gt; aka &lt;code&gt;this&lt;/code&gt; aka &lt;code&gt;window&lt;/code&gt; object. This is because the way
+jQuery-mobile is wrapped in a block where &lt;code&gt;this&lt;/code&gt; is &lt;code&gt;undefined&lt;/code&gt; because the
+code is not being executed in the assumed scope.&lt;/p&gt;
+
+&lt;h3 id=&#34;example:d3542b7334ad974552de49ebf1b76abe&#34;&gt;Example:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function(require,module,exports){
+(function (global){
+;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
+&#34;use strict&#34;;(function(root, doc, factory){if(typeof define === &#34;function&#34; &amp;amp;&amp;amp; define.amd){define([&#34;jquery&#34;], function($){factory($, root, doc);return $.mobile;});}else {factory(root.jQuery, root, doc);}})(undefined || window, document, function(jQuery, window, document, undefine) {
+
+/*!
+* jQuery Mobile 1.4.5
+* Git HEAD hash: 68e55e78b292634d3991c795f06f5e37a512decc &lt;&gt; Date: Fri Oct 31 2014 17:33:30 UTC
+* http://jquerymobile.com
+*
+* Copyright 2010, 2014 jQuery Foundation, Inc. and othercontributors
+* Released under the MIT license.
+* http://jquery.org/license
+*
+*/
+
+(function ( root, doc, factory ) {
+    if ( typeof define === &#34;function&#34; &amp;amp;&amp;amp; define.amd ) {
+        // AMD. Register as an anonymous module.
+        define( [ &#34;jquery&#34; ], function ( $ ) {
+            factory( $, root, doc );
+            return $.mobile;
+        });
+    } else {
+        // Browser globals
+        factory( root.jQuery, root, doc );
+    }
+}( this, document, function ( jQuery, window, document, undefined ) {
+(function( $ ) {
+    $.mobile = {};
+}( jQuery ));
+
+// more jquery code
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The jQuery-mobile team doesn&amp;rsquo;t want to make fixes for this because they would
+have to continue to make patches for their code when another build system comes
+out and whose got time to keep up with that? Needless to say, I wish they had
+the time for it to make their libraries more compatible for users and they are a
+bigger team than just little ole independent me but that&amp;rsquo;s just my opinion.&lt;/p&gt;
+
+&lt;p&gt;Today is going on my 2nd day being stuck with the issue (also second day of
+using gulp and browserify so give me a break) and I&amp;rsquo;ve tried just about every
+solution I can find on the web before I just gave up and wrote my own. Though,
+not exactly the most elegant solution, I simply replaced all instances of &lt;code&gt;this&lt;/code&gt;
+to &lt;code&gt;this || window&lt;/code&gt; and walla it worked.&lt;/p&gt;
+
+&lt;p&gt;Now I have jQuery-mobile working just fine in my ES6 project. I&amp;rsquo;ve bundled my
+changes up in a npm project under the name &lt;strong&gt;jquery-mobile-babel-safe&lt;/strong&gt;. Here is
+how I use it in my project:&lt;/p&gt;
+
+&lt;h3 id=&#34;install:d3542b7334ad974552de49ebf1b76abe&#34;&gt;Install&lt;/h3&gt;
+
+&lt;p&gt;Run this command in your project room:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    npm install jquery-mobile-babel-safe --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;package.json&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    &#34;browser&#34;: {
+      &#34;jquery-mobile&#34;: &#34;./node_modules/jquery-mobile-babel-safe/dist/jquery.mobile-1.4.5.js&#34;
+    },
+    &#34;browserify-shim&#34;: {
+      &#34;jquery-mobile&#34;: {
+        &#34;exports&#34;: &#34;jQuery.mobile&#34;
+      }
+    }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s about it. You can test by importing &lt;code&gt;jquery-mobile&lt;/code&gt; on your page. You
+should have access to &lt;code&gt;$.mobile&lt;/code&gt; in your scripts.&lt;/p&gt;
+
+&lt;h3 id=&#34;wrap-up:d3542b7334ad974552de49ebf1b76abe&#34;&gt;Wrap up&amp;hellip;&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;d like to hear from you if you have a simpler way of making this work. I do
+feel a little bad about polluting the npm package repository with yet another
+jQuery package and I&amp;rsquo;d like to know of a better way of doing this but I know a
+few other people were stuck with this issue so be it.&lt;/p&gt;
+
+&lt;p&gt;Happy hacking!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

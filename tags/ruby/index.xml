@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/ruby/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 126 Aug 201200 12:12:12 PST</updated>
+    
+    <item>
+      <title>Facebook Page Analytics</title>
+      <link>http://richardsumilang.com/programming/ruby/ror/facebook-page-analytics-ror/</link>
+      <pubDate>Sun, 126 Aug 201200 12:12:12 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/programming/ruby/ror/facebook-page-analytics-ror/</guid>
+      <description>
+
+&lt;p&gt;I decided to flex my programming muscle and try something new. I&amp;rsquo;ve done Ruby
+for CLI tools and &lt;a href=&#34;https://github.com/rsumilang/chef-gearman&#34; title=&#34;Chef-Gearman&#34;&gt;Chef cookbooks&lt;/a&gt; but never a Ruby on Rails (RoR)
+application. Much of the hype with RoR is gone these days but it&amp;rsquo;s been around
+long enough to be considered tested and somewhat mature like an old elitist
+hipster&amp;hellip; If that makes sense.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;tldr;&lt;/strong&gt; &lt;a href=&#34;https://github.com/rsumilang/fb-page-analytics-ror&#34; title=&#34;Facebook Page Analytics with Ruby On Rails&#34;&gt;Just give me the source&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;description:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;The project was to create a Rails applications that provides analytics for the
+last 100 Facebook posts of a Facebook page. As a user, you should be able to
+login using Facebook, see a list of pages that you have authorized admin access
+to, and lastly see a display of the pages&amp;rsquo; top 5 posts (out of the last 100) as
+well as a sortable table of the 100 most recent posts.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Store user and page Facebook credentials, basic Facebook profile data (name of
+user, name of page, email address), and the last 100 posts in a database.&lt;/li&gt;
+&lt;li&gt;Each entry in the post table should include:
+
+&lt;ul&gt;
+&lt;li&gt;Link to Posts (on Facebook)&lt;/li&gt;
+&lt;li&gt;Message/text body of post&lt;/li&gt;
+&lt;li&gt;Number of Shares&lt;/li&gt;
+&lt;li&gt;Number of Comments&lt;/li&gt;
+&lt;li&gt;Number of Likes&lt;/li&gt;
+&lt;li&gt;Number of Impressions&lt;/li&gt;
+&lt;li&gt;Date Posted&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Posts should be sortable by number of shares, likes, comments, and date posted.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Top 5 Posts&amp;rdquo; display can be chosen/ranked by any arbitrary combination of
+post statistics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;the-application:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;The Application&lt;/h1&gt;
+
+&lt;p&gt;A week long into RoR land and I&amp;rsquo;m happy to say it&amp;rsquo;s done&amp;hellip; Well, 98% of it is.
+I was nice enough to leave a little of this project left for you to do (I
+happily accept pull requests):&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Retrieving the number of impressions for each post.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The app currently does not paginate to the end of all Facebook page posts. It
+stops at of the first set of results.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/rsumilang/fb-page-analytics-ror&#34; title=&#34;Facebook Page Analytics with Ruby On Rails&#34;&gt;Facebook page analytics source&lt;/a&gt; is freely made available under the
+&lt;a href=&#34;https://creativecommons.org/licenses/by/4.0/legalcode&#34; title=&#34;Creative Commons License 4.0&#34;&gt;Creative Commons License v4&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-system:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;My System&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ruby:&lt;/strong&gt; ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-darwin14]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rails:&lt;/strong&gt; Rails 4.2.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setup:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;The requirements to run the project will be kept updated in the
+&lt;a href=&#34;https://github.com/rsumilang/fb-page-analytics-ror/blob/master/README.rdoc&#34; title=&#34;Facebook Page Analytics Readme.rdoc&#34;&gt;README.rdoc&lt;/a&gt; but shouldn&amp;rsquo;t diverge too much from this:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Database setup (sqlite):
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Database Setup&#34;&gt;rake db:migrate&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The Facebook configuration variables are externalized via environment
+variables so you&amp;rsquo;ll need to set these parameters:
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Configuration&#34;&gt;export FB_APP_ID=YOUR_FB_APP_ID
+export FB_APP_SECRET=YOUR_FB_APP_SECRET&lt;/code&gt;&lt;/pre&gt;
+&lt;a href=&#34;https://developers.facebook.com/docs/apps/register&#34; title=&#34;Facebook Register and Configure an App&#34;&gt;Read this doc&lt;/a&gt; if you&amp;rsquo;re unfamiliar with created a Facebook App.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Two servers need to be started. The &lt;em&gt;app server&lt;/em&gt; and &lt;em&gt;job server&lt;/em&gt;:
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Servers&#34;&gt;rails s # app server
+rake jobs:work # job server&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;urls:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Urls&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Application:&lt;/strong&gt; &lt;a href=&#34;http://localhost:3000/&#34;&gt;http://localhost:3000/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Job Web View:&lt;/strong&gt; &lt;a href=&#34;http://localhost:3000/delayed_job/overview&#34;&gt;http://localhost:3000/delayed_job/overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;database:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Database&lt;/h2&gt;
+
+&lt;p&gt;Please refer to the graphic:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/programming/ruby/ror/facebook-page-analytics-ror/db-layout-772x346.png&#34; alt=&#34;Facebook Analytics Database Graphic&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-it-works:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;How it works&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The application can be loaded on &lt;a href=&#34;http://localhost:3000/&#34;&gt;http://localhost:3000/&lt;/a&gt;. You will find a
+fancy &amp;ldquo;Facebook&amp;rdquo; link in the header. Click the link and log in with the test
+account.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Upon successful log in, the system grabs all the pages the user is an
+administer of and does a few things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;If the page does not exist in our db then we create it and create the
+relationship between the user and the page.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If a user no longer has access to a specific page then the relationship
+between the two is removed but all page data is kept.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The pages controller will either list all the pages a user is an admin of,
+allowing the user to choose OR redirect to the stats page of the single page
+they administer.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The stats page is then responsible for retrieving all posts. On first load,
+the stats page will pull from the top of the feed all the way down. On every
+subsequent request, the stats controller will pull only newer feed items.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A background job is then created for each post. This background job is
+responsible for fetching the likes, comments, shares, and impressions for each
+post while updating the database. This background process was created so the
+wait on the stats page wasn&amp;rsquo;t terribly long. Because of this, you will see the
+stats update on the page when you refresh.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The stats page displays a top 5 list of the most popular posts. This is
+ordered by date, likes, and comments. Nothing too crazy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The stats page then lists all posts in a table below in a sortable fashion
+by clicking the header.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The sign out button will set session variables to &lt;code&gt;nil&lt;/code&gt; causing an invalid
+session and redirect the user to the home page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;gems-used:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Gems Used&lt;/h2&gt;
+
+&lt;p&gt;The following gems were used to build the project:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/mkdynamic/omniauth-facebook&#34; title=&#34;OmniAuth Facebook&#34;&gt;omniauth-facebook&lt;/a&gt;:&lt;/strong&gt; Used to handle authentication to Facebook.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/arsduo/koala&#34; title=&#34;Koala Gem&#34;&gt;koala&lt;/a&gt;:&lt;/strong&gt; Nifty for communicating with Facebook graph API.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://daemons.rubyforge.org/&#34; title=&#34;Daemons Gem&#34;&gt;daemons&lt;/a&gt;:&lt;/strong&gt; Experimented with this for fun. This would be used to run
+the job server in production.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/collectiveidea/delayed_job_active_record&#34; title=&#34;DelayedJob ActiveRecord Backend&#34;&gt;delayed_job_active_record&lt;/a&gt;:&lt;/strong&gt; - Used to schedule and run the background
+jobs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/ejschmitt/delayed_job_web&#34; title=&#34;Delayed Job Web&#34;&gt;delayed_job_web&lt;/a&gt;:&lt;/strong&gt; Web interface for delayed job.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;refactoring:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Refactoring&lt;/h2&gt;
+
+&lt;p&gt;There are a few things I know that can be done better off the top of my head if
+this were a real world application. (I would also appreciate any feedback or
+ruby-isms in the comments.)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Ideally the stats page should not be making the request to Facebook to pull
+in the posts associate with the page they are on. It should be a background job
+that fires up more workers to gather the metrics for each post.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The job worker only supports handling one post at a time. It&amp;rsquo;s fine for the
+sake example but in a real world situation we should be making batch requests.
+This can easily be done by passing an array of Facebook &lt;code&gt;object_ids&lt;/code&gt; to the
+endpoint to eliminate multiple requests. The same could be said for the page
+controller.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;As the application grows, there will be more repetition the way things were
+done. I can see use for breaking some of the &lt;code&gt;User&lt;/code&gt; model up by removing the
+sign up code and placing it into a concern and there can be good uses for
+helpers.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;end-thoughts:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;End Thoughts&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;The Good:&lt;/strong&gt; I was fairly impressed with the amount of work I got done in a
+short amount of time without having any Ruby friends to lean on. The syntactic
+sugar provided by Ruby made certain things a pleasure to work with and gems seem
+well thought out with a lot of care that the Ruby community is known for. My
+personal favorite being the &lt;em&gt;delayed_job_active_record&lt;/em&gt; in this project.&lt;/p&gt;
+
+&lt;p&gt;I was also impressed by how organized Rails is. The database migration feature
+was really smooth and I thought it was neat how 3rd party gems made use of that
+in your application.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Bad:&lt;/strong&gt; Sometimes there was too much syntactic sugar that actually did the
+opposite of making code easier to read. One of my pet peeves was using hashes.
+This was because the colon placement in symbols changes and sometimes there
+isn&amp;rsquo;t a clear distinction where a method parameter ends and starts without
+having to look very closely. I found this annoying at times because it was also
+hard for my IDE (IntelliJ) to tell me what was valid code. This is more of a
+Ruby dislike than RoR, though.&lt;/p&gt;
+
+&lt;p&gt;On the Rails side, there was also too much magic. I get it, convention over
+configuration but it bit me a few times with ActiveRecord. The code didn&amp;rsquo;t error
+when trying to use so it was kind of annoying to debug at times. Maybe there are
+better ways to do it that I&amp;rsquo;m not aware of?&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Would I use RoR again? Yeah, probably. The learning curve was kind of high with
+Rails but once you get in the groove of it then it&amp;rsquo;s pretty powerful with the
+amount of work you can accomplish in a short amount of time. For me, this would
+be great for prototyping ideas. I&amp;rsquo;m a fan of the great gems I found and
+&lt;a href=&#34;https://github.com/rails-api/rails-api&#34; title=&#34;Rails::API&#34;&gt;Rails::API&lt;/a&gt; looks pretty neat.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A thing or two about style guides</title>
+      <link>http://richardsumilang.com/programming/a-thing-or-two-about-style-guides/</link>
+      <pubDate>Sun, 26 Aug 80200 02:02:02 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/programming/a-thing-or-two-about-style-guides/</guid>
+      <description>
+
+&lt;p&gt;A style guide should be chosen when working on a solo project or with a team.
+This keeps the code manageable when you or your peers come back to work on it in
+the future. It doesn&amp;rsquo;t matter which style guideline you choose as long as you
+stick with it. In a sense, writing clean code will also help reduce technical
+debt. Below is a collection of style guides that I collected over time. Some
+important rules are repeated in other styles. It&amp;rsquo;s nice to keep consistency (to
+a degree) if you are writing in multiple programming languages but ultimately
+it&amp;rsquo;s best to do what&amp;rsquo;s best for each language.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Any fool can write code that a computer can understand.
+Good programmers write code that humans can understand.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Martin Fowler, Refactoring: Improving the Design of Existing Code&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Last updated: Feb 8th, 2015.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;general:18519818bf3de3e7e682d6ba7493a063&#34;&gt;General&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Programming_style&#34; title=&#34;Programming style&#34;&gt;Programming style&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style&#34; title=&#34;MDN Coding Style&#34;&gt;MDN Coding Style&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.komputado.com/eseoj/1tbs.htm&#34; title=&#34;The One True Brace Style&#34;&gt;The One True Brace Style&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;c:18519818bf3de3e7e682d6ba7493a063&#34;&gt;C++&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.stroustrup.com/bs_faq2.html&#34; title=&#34;Bjarne Stroustrup&#39;s C++ Style and Technique FAQ&#34;&gt;Bjarne Stroustrup&amp;rsquo;s C++ Style and Technique FAQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/cppguide.html&#34; title=&#34;Google C++ Style Guide&#34;&gt;Google C++ Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;html-css:18519818bf3de3e7e682d6ba7493a063&#34;&gt;HTML/CSS&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codeguide.co/&#34; title=&#34;Code Guide by @mdo&#34;&gt;Code Guide by @mdo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/styleguide/css&#34; title=&#34;CSS Style Guide&#34;&gt;CSS Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml&#34; title=&#34;Google HTML/CSS Style Guide&#34;&gt;Google HTML/CSS Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.w3schools.com/html/html5_syntax.asp&#34; title=&#34;HTML(5) Style Guide and Coding Conventions&#34;&gt;HTML(5) Style Guide and Coding Conventions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;java:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Java&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://source.android.com/source/code-style.html&#34; title=&#34;Android Code Style&#34;&gt;Android Code Style&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.oracle.com/technetwork/java/codeconvtoc-136057.html&#34; title=&#34;Code Conventions for the Java Programming Language&#34;&gt;Code Conventions for the Java Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/javaguide.html&#34; title=&#34;Google Java Style Guide&#34;&gt;Google Java Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.javaranch.com/style.jsp&#34; title=&#34;Java Programming Style Guide&#34;&gt;Java Programming Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;javascript:18519818bf3de3e7e682d6ba7493a063&#34;&gt;JavaScript&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://google-styleguide.googlecode.com/svn/trunk/angularjs-google-style.html&#34; title=&#34;An AngularJS Style Guide for Closure Users at Google&#34;&gt;An AngularJS Style Guide for Closure Users at Google&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/styleguide/javascript&#34; title=&#34;GitHub JavaScript style&#34;&gt;GitHub JavaScript style&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml&#34; title=&#34;Google JavaScript Style Guide&#34;&gt;Google JavaScript Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/felixge/node-style-guide&#34; title=&#34;Node.js Style Guide&#34;&gt;Node.js Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;lisp:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Lisp&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/lispguide.xml&#34; title=&#34;Common Lisp Style Guide&#34;&gt;Common Lisp Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;objective-c:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Objective C&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html&#34; title=&#34;Apple&#39;s Programming with Objective C Conventions&#34;&gt;Apple&amp;rsquo;s Programming with Objective C Conventions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/github/objective-c-style-guide&#34; title=&#34;GitHub Objective C Style Guide&#34;&gt;GitHub Objective C Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml&#34; title=&#34;Google Objective C Style Guide&#34;&gt;Google Objective C Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/NYTimes/objective-c-style-guide&#34; title=&#34;NYTimes Objective-C Style Guide&#34;&gt;NYTimes Objective-C Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;php:18519818bf3de3e7e682d6ba7493a063&#34;&gt;PHP&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pear.php.net/manual/en/standards.php&#34; title=&#34;PEAR Coding Standards&#34;&gt;PEAR Coding Standards&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.php-fig.org/psr/psr-2/&#34; title=&#34;PSR-2 Coding Style Guideline&#34;&gt;PSR-2 Coding Style Guideline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://symfony.com/doc/current/contributing/code/standards.html&#34; title=&#34;Symfony Coding Standards&#34;&gt;Symfony Coding Standards&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://framework.zend.com/manual/1.12/en/coding-standard.html&#34; title=&#34;Zend Coding Standards&#34;&gt;Zend Coding Standards&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;python:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Python&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/pyguide.html&#34; title=&#34;Google Python Style Guide&#34;&gt;Google Python Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0008/&#34; title=&#34;PEP 8 - Style Guide for Python Code&#34;&gt;PEP 8 - Style Guide for Python Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ruby:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Ruby&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/styleguide/ruby&#34; title=&#34;GitHub Ruby Styleguide&#34;&gt;GitHub Ruby Styleguide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/bestie/objective-ruby-style-guide&#34; title=&#34;The Objective Ruby Style Guide&#34;&gt;The Objective Ruby Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;scala:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Scala&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://twitter.github.io/effectivescala/&#34; title=&#34;Effective Scala&#34;&gt;Effective Scala&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.scala-lang.org/style/&#34; title=&#34;Scala Style Guide&#34;&gt;Scala Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;shell:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Shell&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.inquisitor.ru/doc/coding-style-shell.html&#34; title=&#34;Coding style guidelines: Shell script&#34;&gt;Coding style guidelines: Shell script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/shell.xml&#34; title=&#34;Google Shell Style Guide&#34;&gt;Google Shell Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;swift:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Swift&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/github/swift-style-guide&#34; title=&#34;GitHubs Swift Style Guide&#34;&gt;GitHubs Swift Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;vim:18519818bf3de3e7e682d6ba7493a063&#34;&gt;Vim&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://google-styleguide.googlecode.com/svn/trunk/vimscriptguide.xml&#34; title=&#34;Google Vimscript Style Guide&#34;&gt;Google Vimscript Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My cask script!</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</link>
+      <pubDate>Sun, 106 Aug 261000 10:10:10 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</guid>
+      <description>&lt;p&gt;Finally we get our own &lt;code&gt;apt-get&lt;/code&gt; like tool for Mac! Check out &lt;a href=&#34;http://caskroom.io/&#34; title=&#34;Homebrew cask&#34;&gt;cask&lt;/a&gt; if you
+haven&amp;rsquo;t already! Below is my personal script for my setup. Maybe I&amp;rsquo;ll move this
+to chef recipe for my mac one day? ;)&lt;/p&gt;
+
+&lt;p&gt;Note: The latest and greatest will be maintained on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Cask&#34; &gt;#!/bin/sh
+# Let&#39;s automate installing all our apps!
+#
+# Note: This will require homebrew and cask!
+# See: http://caskroom.io/
+#
+# Uninstall: Provide the --appdir when removing.
+#
+# @author Richard Sumilang &lt;me@richardsumilang.com&gt;
+INSTALL_CMD=&#34;brew cask install --appdir=/Applications&#34;
+
+###########################
+# Communication
+$INSTALL_CMD colloquy
+$INSTALL_CMD propane
+#$INSTALL_CMD skype
+
+
+
+###########################
+# Development
+$INSTALL_CMD atom
+$INSTALL_CMD charles
+$INSTALL_CMD filezilla
+$INSTALL_CMD gas-mask
+$INSTALL_CMD geektool
+$INSTALL_CMD intellij-idea
+$INSTALL_CMD robomongo
+$INSTALL_CMD sequel-pro
+$INSTALL_CMD sourcetree
+$INSTALL_CMD vagrant vagrant-bar
+$INSTALL_CMD virtualbox
+
+
+
+###########################
+# Enterprise
+#$INSTALL_CMD citrix-receiver
+
+
+
+###########################
+# Interwebs
+$INSTALL_CMD firefox
+$INSTALL_CMD google-chrome
+
+
+
+###########################
+# Media
+$INSTALL_CMD mediaelch
+$INSTALL_CMD miro-video-converter
+$INSTALL_CMD videospec
+$INSTALL_CMD vlc
+
+
+
+###########################
+# Music
+$INSTALL_CMD spotify
+
+
+
+###########################
+# Tools
+$INSTALL_CMD dropbox
+
+
+
+###########################
+# Utilities
+$INSTALL_CMD remote-desktop-connection
+$INSTALL_CMD unrarx
+$INSTALL_CMD transmission
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Chef Gearman Cookbook v0.1.0</title>
+      <link>http://richardsumilang.com/server/virtualization/chef/chef-gearman-cookbook-v0-1-0/</link>
+      <pubDate>Sun, 66 Aug 120600 06:06:06 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/server/virtualization/chef/chef-gearman-cookbook-v0-1-0/</guid>
+      <description>&lt;p&gt;A little &lt;a href=&#34;http://gearman.org/&#34; title=&#34;Gearman&#34;&gt;Gearman&lt;/a&gt; cookbook I put together for &lt;a href=&#34;http://www.getchef.com/&#34; title=&#34;Chef&#34;&gt;Chef&lt;/a&gt;. Supports installing
+multiple versions by source. Also has a recipe for the &lt;a href=&#34;https://pecl.php.net/package/gearman&#34; title=&#34;Gearman PHP Extension&#34;&gt;PHP extension&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsumilang/chef-gearman&#34; title=&#34;Chef Gearman Cookbook&#34;&gt;Grab it from GitHub&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;kthxbye.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Update Chef Solo on your Vagrant</title>
+      <link>http://richardsumilang.com/server/virtualization/vagrant/chef/update-chef-solo-on-your-vagrant/</link>
+      <pubDate>Sun, 66 Aug 100600 06:06:06 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/server/virtualization/vagrant/chef/update-chef-solo-on-your-vagrant/</guid>
+      <description>&lt;p&gt;Install &lt;a href=&#34;https://github.com/schisamo/vagrant-omnibus&#34; title=&#34;Vagrant Omnibus&#34;&gt;vagrant-omnibus&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Install vagrant-omnibus&#34;&gt;vagrant plugin install vagrant-omnibus&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configure your &lt;a href=&#34;http://docs.vagrantup.com/v2/vagrantfile/index.html&#34; title=&#34;Vagrantfile Doc&#34;&gt;Vagrantfile&lt;/a&gt; before provisioning to the latest version of
+Chef:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34; title=&#34;Configure Vagrantfile&#34;&gt;config.omnibus.chef_version = :latest&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also upgrade to a specific version like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34; title=&#34;Configure Vagrantfile&#34;&gt;config.omnibus.chef_version = &#34;11.12.8&#34;&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

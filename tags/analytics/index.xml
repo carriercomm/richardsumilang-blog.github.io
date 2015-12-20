@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analytics on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/analytics/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 126 Aug 201200 12:12:12 PST</updated>
+    
+    <item>
+      <title>Facebook Page Analytics</title>
+      <link>http://richardsumilang.com/programming/ruby/ror/facebook-page-analytics-ror/</link>
+      <pubDate>Sun, 126 Aug 201200 12:12:12 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/programming/ruby/ror/facebook-page-analytics-ror/</guid>
+      <description>
+
+&lt;p&gt;I decided to flex my programming muscle and try something new. I&amp;rsquo;ve done Ruby
+for CLI tools and &lt;a href=&#34;https://github.com/rsumilang/chef-gearman&#34; title=&#34;Chef-Gearman&#34;&gt;Chef cookbooks&lt;/a&gt; but never a Ruby on Rails (RoR)
+application. Much of the hype with RoR is gone these days but it&amp;rsquo;s been around
+long enough to be considered tested and somewhat mature like an old elitist
+hipster&amp;hellip; If that makes sense.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;tldr;&lt;/strong&gt; &lt;a href=&#34;https://github.com/rsumilang/fb-page-analytics-ror&#34; title=&#34;Facebook Page Analytics with Ruby On Rails&#34;&gt;Just give me the source&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;description:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;The project was to create a Rails applications that provides analytics for the
+last 100 Facebook posts of a Facebook page. As a user, you should be able to
+login using Facebook, see a list of pages that you have authorized admin access
+to, and lastly see a display of the pages&amp;rsquo; top 5 posts (out of the last 100) as
+well as a sortable table of the 100 most recent posts.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Store user and page Facebook credentials, basic Facebook profile data (name of
+user, name of page, email address), and the last 100 posts in a database.&lt;/li&gt;
+&lt;li&gt;Each entry in the post table should include:
+
+&lt;ul&gt;
+&lt;li&gt;Link to Posts (on Facebook)&lt;/li&gt;
+&lt;li&gt;Message/text body of post&lt;/li&gt;
+&lt;li&gt;Number of Shares&lt;/li&gt;
+&lt;li&gt;Number of Comments&lt;/li&gt;
+&lt;li&gt;Number of Likes&lt;/li&gt;
+&lt;li&gt;Number of Impressions&lt;/li&gt;
+&lt;li&gt;Date Posted&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Posts should be sortable by number of shares, likes, comments, and date posted.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Top 5 Posts&amp;rdquo; display can be chosen/ranked by any arbitrary combination of
+post statistics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;the-application:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;The Application&lt;/h1&gt;
+
+&lt;p&gt;A week long into RoR land and I&amp;rsquo;m happy to say it&amp;rsquo;s done&amp;hellip; Well, 98% of it is.
+I was nice enough to leave a little of this project left for you to do (I
+happily accept pull requests):&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Retrieving the number of impressions for each post.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The app currently does not paginate to the end of all Facebook page posts. It
+stops at of the first set of results.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/rsumilang/fb-page-analytics-ror&#34; title=&#34;Facebook Page Analytics with Ruby On Rails&#34;&gt;Facebook page analytics source&lt;/a&gt; is freely made available under the
+&lt;a href=&#34;https://creativecommons.org/licenses/by/4.0/legalcode&#34; title=&#34;Creative Commons License 4.0&#34;&gt;Creative Commons License v4&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-system:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;My System&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ruby:&lt;/strong&gt; ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-darwin14]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rails:&lt;/strong&gt; Rails 4.2.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setup:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;The requirements to run the project will be kept updated in the
+&lt;a href=&#34;https://github.com/rsumilang/fb-page-analytics-ror/blob/master/README.rdoc&#34; title=&#34;Facebook Page Analytics Readme.rdoc&#34;&gt;README.rdoc&lt;/a&gt; but shouldn&amp;rsquo;t diverge too much from this:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Database setup (sqlite):
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Database Setup&#34;&gt;rake db:migrate&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The Facebook configuration variables are externalized via environment
+variables so you&amp;rsquo;ll need to set these parameters:
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Configuration&#34;&gt;export FB_APP_ID=YOUR_FB_APP_ID
+export FB_APP_SECRET=YOUR_FB_APP_SECRET&lt;/code&gt;&lt;/pre&gt;
+&lt;a href=&#34;https://developers.facebook.com/docs/apps/register&#34; title=&#34;Facebook Register and Configure an App&#34;&gt;Read this doc&lt;/a&gt; if you&amp;rsquo;re unfamiliar with created a Facebook App.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Two servers need to be started. The &lt;em&gt;app server&lt;/em&gt; and &lt;em&gt;job server&lt;/em&gt;:
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Servers&#34;&gt;rails s # app server
+rake jobs:work # job server&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;urls:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Urls&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Application:&lt;/strong&gt; &lt;a href=&#34;http://localhost:3000/&#34;&gt;http://localhost:3000/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Job Web View:&lt;/strong&gt; &lt;a href=&#34;http://localhost:3000/delayed_job/overview&#34;&gt;http://localhost:3000/delayed_job/overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;database:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Database&lt;/h2&gt;
+
+&lt;p&gt;Please refer to the graphic:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/programming/ruby/ror/facebook-page-analytics-ror/db-layout-772x346.png&#34; alt=&#34;Facebook Analytics Database Graphic&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-it-works:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;How it works&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The application can be loaded on &lt;a href=&#34;http://localhost:3000/&#34;&gt;http://localhost:3000/&lt;/a&gt;. You will find a
+fancy &amp;ldquo;Facebook&amp;rdquo; link in the header. Click the link and log in with the test
+account.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Upon successful log in, the system grabs all the pages the user is an
+administer of and does a few things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;If the page does not exist in our db then we create it and create the
+relationship between the user and the page.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If a user no longer has access to a specific page then the relationship
+between the two is removed but all page data is kept.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The pages controller will either list all the pages a user is an admin of,
+allowing the user to choose OR redirect to the stats page of the single page
+they administer.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The stats page is then responsible for retrieving all posts. On first load,
+the stats page will pull from the top of the feed all the way down. On every
+subsequent request, the stats controller will pull only newer feed items.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A background job is then created for each post. This background job is
+responsible for fetching the likes, comments, shares, and impressions for each
+post while updating the database. This background process was created so the
+wait on the stats page wasn&amp;rsquo;t terribly long. Because of this, you will see the
+stats update on the page when you refresh.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The stats page displays a top 5 list of the most popular posts. This is
+ordered by date, likes, and comments. Nothing too crazy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The stats page then lists all posts in a table below in a sortable fashion
+by clicking the header.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The sign out button will set session variables to &lt;code&gt;nil&lt;/code&gt; causing an invalid
+session and redirect the user to the home page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;gems-used:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Gems Used&lt;/h2&gt;
+
+&lt;p&gt;The following gems were used to build the project:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/mkdynamic/omniauth-facebook&#34; title=&#34;OmniAuth Facebook&#34;&gt;omniauth-facebook&lt;/a&gt;:&lt;/strong&gt; Used to handle authentication to Facebook.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/arsduo/koala&#34; title=&#34;Koala Gem&#34;&gt;koala&lt;/a&gt;:&lt;/strong&gt; Nifty for communicating with Facebook graph API.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://daemons.rubyforge.org/&#34; title=&#34;Daemons Gem&#34;&gt;daemons&lt;/a&gt;:&lt;/strong&gt; Experimented with this for fun. This would be used to run
+the job server in production.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/collectiveidea/delayed_job_active_record&#34; title=&#34;DelayedJob ActiveRecord Backend&#34;&gt;delayed_job_active_record&lt;/a&gt;:&lt;/strong&gt; - Used to schedule and run the background
+jobs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/ejschmitt/delayed_job_web&#34; title=&#34;Delayed Job Web&#34;&gt;delayed_job_web&lt;/a&gt;:&lt;/strong&gt; Web interface for delayed job.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;refactoring:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Refactoring&lt;/h2&gt;
+
+&lt;p&gt;There are a few things I know that can be done better off the top of my head if
+this were a real world application. (I would also appreciate any feedback or
+ruby-isms in the comments.)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Ideally the stats page should not be making the request to Facebook to pull
+in the posts associate with the page they are on. It should be a background job
+that fires up more workers to gather the metrics for each post.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The job worker only supports handling one post at a time. It&amp;rsquo;s fine for the
+sake example but in a real world situation we should be making batch requests.
+This can easily be done by passing an array of Facebook &lt;code&gt;object_ids&lt;/code&gt; to the
+endpoint to eliminate multiple requests. The same could be said for the page
+controller.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;As the application grows, there will be more repetition the way things were
+done. I can see use for breaking some of the &lt;code&gt;User&lt;/code&gt; model up by removing the
+sign up code and placing it into a concern and there can be good uses for
+helpers.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;end-thoughts:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;End Thoughts&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;The Good:&lt;/strong&gt; I was fairly impressed with the amount of work I got done in a
+short amount of time without having any Ruby friends to lean on. The syntactic
+sugar provided by Ruby made certain things a pleasure to work with and gems seem
+well thought out with a lot of care that the Ruby community is known for. My
+personal favorite being the &lt;em&gt;delayed_job_active_record&lt;/em&gt; in this project.&lt;/p&gt;
+
+&lt;p&gt;I was also impressed by how organized Rails is. The database migration feature
+was really smooth and I thought it was neat how 3rd party gems made use of that
+in your application.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Bad:&lt;/strong&gt; Sometimes there was too much syntactic sugar that actually did the
+opposite of making code easier to read. One of my pet peeves was using hashes.
+This was because the colon placement in symbols changes and sometimes there
+isn&amp;rsquo;t a clear distinction where a method parameter ends and starts without
+having to look very closely. I found this annoying at times because it was also
+hard for my IDE (IntelliJ) to tell me what was valid code. This is more of a
+Ruby dislike than RoR, though.&lt;/p&gt;
+
+&lt;p&gt;On the Rails side, there was also too much magic. I get it, convention over
+configuration but it bit me a few times with ActiveRecord. The code didn&amp;rsquo;t error
+when trying to use so it was kind of annoying to debug at times. Maybe there are
+better ways to do it that I&amp;rsquo;m not aware of?&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion:5d2cb92d0bce8e0feb5f26d3b736eec1&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Would I use RoR again? Yeah, probably. The learning curve was kind of high with
+Rails but once you get in the groove of it then it&amp;rsquo;s pretty powerful with the
+amount of work you can accomplish in a short amount of time. For me, this would
+be great for prototyping ideas. I&amp;rsquo;m a fan of the great gems I found and
+&lt;a href=&#34;https://github.com/rails-api/rails-api&#34; title=&#34;Rails::API&#34;&gt;Rails::API&lt;/a&gt; looks pretty neat.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

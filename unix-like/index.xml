@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unix-Likes on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/unix-like/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 200900 09:09:09 PST</updated>
+    
+    <item>
+      <title>Automate Your OS X App Installations</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/casks-installer-v1/</link>
+      <pubDate>Sun, 96 Aug 200900 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/casks-installer-v1/</guid>
+      <description>
+
+&lt;p&gt;I refined my &lt;a href=&#34;http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/&#34; title=&#34;My Cask Script&#34;&gt;original cask script&lt;/a&gt; for installing the software needed on
+multiple Mac workstations. The new version now allows you to configure parameters of
+the installation such as install path and which category of applications you
+wish to install.&lt;/p&gt;
+
+&lt;p&gt;The point of this tool is to help me configure (or reconfigure) workstations as
+needed by removing the manual work of finding the applications I always use
+online, unpacking, and copying to applications folder. That process becomes a
+tedious task when working with dozens of pieces of software.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsumilang/casks-installer/fork&#34; title=&#34;Casks Installer Fork&#34;&gt;Fork it&lt;/a&gt; for your own use on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;Github&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h3 id=&#34;why-a-sudden-update:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Why a sudden update?&lt;/h3&gt;
+
+&lt;p&gt;A new version of OS X El Capitan is to be released very soon. I&amp;rsquo;ve always felt
+installing a fresh OS ran smoother than doing an upgrade. Maybe the scars are
+that deep from the days of going Windows 95 to 98? Idk.&lt;/p&gt;
+
+&lt;p&gt;Anyways, I&amp;rsquo;ll be doing a fresh install of El Capitan and I wanted to make sure
+my apps were in order since I&amp;rsquo;ve last used &lt;a href=&#34;http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/&#34; title=&#34;My Cask Script&#34;&gt;my cask script&lt;/a&gt;. The process of
+manually installing each app takes longer than the actual OS install.
+Furthermore, I don&amp;rsquo;t need all apps installed in one shot so I broke them up into
+installable category groups&amp;hellip; Something I have been itching to do since the
+original mockup.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-it-works:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;How it works&lt;/h3&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice a file called &lt;a href=&#34;https://github.com/rsumilang/casks-installer/blob/master/install.rb&#34; title=&#34;install.rb script&#34;&gt;&lt;code&gt;install.rb&lt;/code&gt;&lt;/a&gt; in the project root. This is the
+script you will interface with for installing (or uninstalling) applications.
+Applications are grouped by categories located in the &lt;a href=&#34;https://github.com/rsumilang/casks-installer/tree/master/category&#34; title=&#34;Casks Installer Categories&#34;&gt;&lt;code&gt;./category&lt;/code&gt;&lt;/a&gt; folder
+where you can add more or less.&lt;/p&gt;
+
+&lt;p&gt;You can get a list of configurable options by running the &lt;code&gt;-h&lt;/code&gt; help option.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -h&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;options:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Options&lt;/h3&gt;
+
+&lt;h4 id=&#34;appdir:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;appdir&lt;/h4&gt;
+
+&lt;p&gt;The default location cask uses for Application shortcuts is &lt;code&gt;~/Applications&lt;/code&gt;. I
+change this setting in my install command to point to &lt;code&gt;/Applications&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Default:&lt;/em&gt; &lt;code&gt;/Applications&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb --appdir=/Applications&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;category:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;category&lt;/h4&gt;
+
+&lt;p&gt;Name of the application category group to install (or uninstall). The category
+name should reference a file in the &lt;code&gt;./category/&lt;/code&gt; directory, excluding the file
+extension. If no category group is specified then all will be installed.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb --category=browsers&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;or:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;uninstall:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;uninstall&lt;/h4&gt;
+
+&lt;p&gt;This changes the default &lt;code&gt;install&lt;/code&gt; option to &lt;code&gt;uninstall&lt;/code&gt;. With this flag on you
+can uninstall a category group or uninstall everything. This option requires no additional arguments.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers --uninstall&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;or&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers -u&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;updates:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Updates&lt;/h3&gt;
+
+&lt;p&gt;Follow the &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub repository&lt;/a&gt; for updates and please add any feature
+requests to the &lt;a href=&#34;https://github.com/rsumilang/casks-installer/issues&#34; title=&#34;Casks Installer Issues&#34;&gt;project issues&lt;/a&gt;. I welcome pull requests :)&lt;/p&gt;
+
+&lt;h3 id=&#34;known-issues:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Known issues&lt;/h3&gt;
+
+&lt;p&gt;Unfortunately there is no way to specify the specific version of an app that you
+need. This hasn&amp;rsquo;t been much of an issue for me yet but I know it would be nice
+to have.&lt;/p&gt;
+
+&lt;h2 id=&#34;license:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This was created by &lt;a href=&#34;http://richardsumilang.com/&#34;&gt;Richard Sumilang&lt;/a&gt; and is
+licensed under the &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;CC BY-SA 3.0&lt;/a&gt;
+license. You are encouraged to fork this repository and make adjustments
+according to your preferences.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34; alt=&#34;Creative Commons License&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My cask script!</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</link>
+      <pubDate>Sun, 106 Aug 261000 10:10:10 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</guid>
+      <description>&lt;p&gt;Finally we get our own &lt;code&gt;apt-get&lt;/code&gt; like tool for Mac! Check out &lt;a href=&#34;http://caskroom.io/&#34; title=&#34;Homebrew cask&#34;&gt;cask&lt;/a&gt; if you
+haven&amp;rsquo;t already! Below is my personal script for my setup. Maybe I&amp;rsquo;ll move this
+to chef recipe for my mac one day? ;)&lt;/p&gt;
+
+&lt;p&gt;Note: The latest and greatest will be maintained on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Cask&#34; &gt;#!/bin/sh
+# Let&#39;s automate installing all our apps!
+#
+# Note: This will require homebrew and cask!
+# See: http://caskroom.io/
+#
+# Uninstall: Provide the --appdir when removing.
+#
+# @author Richard Sumilang &lt;me@richardsumilang.com&gt;
+INSTALL_CMD=&#34;brew cask install --appdir=/Applications&#34;
+
+###########################
+# Communication
+$INSTALL_CMD colloquy
+$INSTALL_CMD propane
+#$INSTALL_CMD skype
+
+
+
+###########################
+# Development
+$INSTALL_CMD atom
+$INSTALL_CMD charles
+$INSTALL_CMD filezilla
+$INSTALL_CMD gas-mask
+$INSTALL_CMD geektool
+$INSTALL_CMD intellij-idea
+$INSTALL_CMD robomongo
+$INSTALL_CMD sequel-pro
+$INSTALL_CMD sourcetree
+$INSTALL_CMD vagrant vagrant-bar
+$INSTALL_CMD virtualbox
+
+
+
+###########################
+# Enterprise
+#$INSTALL_CMD citrix-receiver
+
+
+
+###########################
+# Interwebs
+$INSTALL_CMD firefox
+$INSTALL_CMD google-chrome
+
+
+
+###########################
+# Media
+$INSTALL_CMD mediaelch
+$INSTALL_CMD miro-video-converter
+$INSTALL_CMD videospec
+$INSTALL_CMD vlc
+
+
+
+###########################
+# Music
+$INSTALL_CMD spotify
+
+
+
+###########################
+# Tools
+$INSTALL_CMD dropbox
+
+
+
+###########################
+# Utilities
+$INSTALL_CMD remote-desktop-connection
+$INSTALL_CMD unrarx
+$INSTALL_CMD transmission
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FTP Sync Script</title>
+      <link>http://richardsumilang.com/unix-like/linux/ftp/ftp-sync-script/</link>
+      <pubDate>Sun, 96 Aug 270900 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/linux/ftp/ftp-sync-script/</guid>
+      <description>&lt;p&gt;Digging around my hard drive and found an old FTP sync script I wrote. Sharing
+it on GitHub now. Enjoy :)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsumilang/sync-ftp&#34; title=&#34;ftp sync script&#34;&gt;https://github.com/rsumilang/sync-ftp&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: If you have the ability to send files in any other way like SSH then I&amp;rsquo;d
+advise using rsync. FTP should be a last resort.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Monitor your filesystem events on Linux with inotify</title>
+      <link>http://richardsumilang.com/unix-like/linux/filesystem/monitor-your-filesystem-events-with-inotify/</link>
+      <pubDate>Sun, 76 Aug 140700 07:07:07 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/linux/filesystem/monitor-your-filesystem-events-with-inotify/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://man7.org/linux/man-pages/man7/inotify.7.html&#34; title=&#34;inotify man page&#34;&gt;Inotify&lt;/a&gt; provides a nifty C API to monitor files and directories. The API
+hooks into your kernel and responding to events on your filesystem is much more
+efficient than doing something like writing a cron job to check for changes in a
+directory every minute. Fortunately, if you&amp;rsquo;re not a C developer, there is a
+package called &lt;a href=&#34;https://github.com/rvoicilas/inotify-tools/wiki&#34; title=&#34;inotify tools&#34;&gt;inotify-tools&lt;/a&gt; that comes with two programs, &lt;code&gt;inotifywait&lt;/code&gt;
+and &lt;code&gt;inotifywatch&lt;/code&gt;. The difference is &lt;code&gt;inotifywait&lt;/code&gt; waits for changes and
+&lt;code&gt;inotifywatch&lt;/code&gt; gathers filesystem access statistics.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of using &lt;code&gt;inotifywait&lt;/code&gt; to keep two directories synced:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Example using inotifywait&#34; &gt;#!/bin/sh
+# Example: inotifywait
+# Description: This example keeps the directory &#34;/put-here&#34; in sync with &#34;/watch-here&#34; when changes are made to anything in &#34;/watch-here&#34;
+# Author: Richard Sumilang &amp;lt;me@richardsumilang.com&amp;gt;
+#
+$watch_dir=/watch-here
+$put_dir=/put-here
+
+inotifywait -mr -e modify,attrib,moved_to,moved_from,move,move_self,create,delete,delete_self $watch_dir |
+while read dir ev file;
+do
+    if [[ $ev == &#34;DELETE&#34;  ]]; then
+        rm -rf $put_dir$file
+    elif [[ $file != *~ ]] || [[ $file != *swp ]] || [[ $file != *swx ]]; then
+        rsync -azvhp --delete --exclude &#39;.idea&#39; --exclude &#39;.svn&#39; --exclude &#39;.vagrant&#39; --exclude &#39;tmp&#39; --exclude &#39;crowdfusion&#39; --exclude &#39;system&#39; &#34;$watch_dir$file&#34; &#34;$put_dir$file&#34;
+    fi
+done;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;what-if-i-m-monitoring-a-network-mount:8c2a876ae8e8d02478170c0d10f1a5f7&#34;&gt;What if I&amp;rsquo;m monitoring a network mount?&lt;/h3&gt;
+
+&lt;p&gt;There are a few gotchas here. If you are monitoring a network mount then you
+will &lt;strong&gt;NOT&lt;/strong&gt; receive notifications if files are edited on the remote machine.
+This is simply because the kernel has no knowledge of this. A solution would be
+to run another process on the host machine that can send a notification.
+However, it should work if you modify files in the mount from the machine
+running &lt;code&gt;inotify&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fixing OpenSSL Heartbleed vulnerability on Ubuntu</title>
+      <link>http://richardsumilang.com/unix-like/ubuntu/security/fixing-openssl-heartbleed-vulnerability-on-ubuntu/</link>
+      <pubDate>Sun, 46 Aug 140400 04:04:04 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/ubuntu/security/fixing-openssl-heartbleed-vulnerability-on-ubuntu/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://heartbleed.com/&#34; title=&#34;Heartbleed bug&#34;&gt;Heartbleed bug&lt;/a&gt; is a rather nice security vulnerability that allows
+remote users to read memory without leaving a trace. Here are the steps to up
+update Ubuntu to patch the issue.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you are running an OpenSSL bug built after April 7th 2014 then
+you&amp;rsquo;re in the clear. You can double check by running the command
+&lt;code&gt;sudo openssl version -a&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get dist-upgrade
+sudo reboot&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Protip:&lt;/strong&gt; You might also want to generate new SSH keys if you are saving
+sensitive data on your servers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/unix-like/security/heartbleed.png&#34; alt=&#34;Heartbleed Bug&#34; class=&#34;center&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to upgrade to PHP 5.4 on Ubuntu 12.10</title>
+      <link>http://richardsumilang.com/unix-like/ubuntu/upgrade-php-5.4-on-ubuntu-12.10/</link>
+      <pubDate>Sun, 36 Aug 310300 03:03:03 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/ubuntu/upgrade-php-5.4-on-ubuntu-12.10/</guid>
+      <description>&lt;p&gt;PHP 5.4 is not in the standard Ubuntu 12.10 repositories. We will use a
+backported version of PHP 5.4 by configuring a 3rd party PPA. Open a terminal
+and run the following commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Installation Instructions&#34;&gt;sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:ondrej/php5-oldstable
+sudo apt-get update; sudo apt-get install php5&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you compiled or installed any PHP extensions via &lt;code&gt;pecl&lt;/code&gt; then you will need to
+reinstall those too. Development packages must be upgraded before you run &lt;code&gt;pecl&lt;/code&gt;
+or &lt;code&gt;phpize&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Development packages&#34;&gt;sudo apt-get install php-pear php5-dev&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test if everything is ok by running &lt;code&gt;phpinfo();&lt;/code&gt; from a PHP script on your
+web-server and &lt;code&gt;php -i&lt;/code&gt; from your terminal.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

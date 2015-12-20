@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transformer on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/transformer/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 190910 09:09:09 PST</updated>
+    
+    <item>
+      <title>Bottlehead S.E.X. 2.1 Unboxed</title>
+      <link>http://richardsumilang.com/electronics/bottlehead/sex/unboxed/</link>
+      <pubDate>Sun, 96 Aug 190910 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/electronics/bottlehead/sex/unboxed/</guid>
+      <description>
+
+&lt;p&gt;There you have it. All the parts that I&amp;rsquo;ll be assembling for the Bottlehead
+S.E.X. version 2.1. The parts in the image include the impedance switch and the
+C4S components. To the far left, there is a bag I didn&amp;rsquo;t bother unraveling
+because it is mainly little screws and bolts that felt easy to lose.&lt;/p&gt;
+
+&lt;h3 id=&#34;build-order:1b4dc4da085555f81049b926eba0bf59&#34;&gt;Build Order&lt;/h3&gt;
+
+&lt;p&gt;I will do incremental builds. This way I can test the quality of a build on it&amp;rsquo;s
+own before adding additional components. This is a good practice I follow in
+daily software development and has proved helpful in debugging. The order will
+be as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;S.E.X. kit.&lt;/li&gt;
+&lt;li&gt;Impedance switch installation.&lt;/li&gt;
+&lt;li&gt;C4S Upgrade.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;customizations:1b4dc4da085555f81049b926eba0bf59&#34;&gt;Customizations&lt;/h3&gt;
+
+&lt;p&gt;Before I dive directly into the build I will need to do a few customizations. I
+figure it will be easier to do this now before the parts are assembled because
+they will not be easily accessible later. The order will be as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Bottlehead PC-3 painting.&lt;/li&gt;
+&lt;li&gt;Sanding and varnishing the wood frame.&lt;/li&gt;
+&lt;li&gt;Nickeling metal components.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

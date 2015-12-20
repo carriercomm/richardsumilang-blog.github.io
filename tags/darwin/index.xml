@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Darwin on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/darwin/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 200900 09:09:09 PST</updated>
+    
+    <item>
+      <title>Automate Your OS X App Installations</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/casks-installer-v1/</link>
+      <pubDate>Sun, 96 Aug 200900 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/casks-installer-v1/</guid>
+      <description>
+
+&lt;p&gt;I refined my &lt;a href=&#34;http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/&#34; title=&#34;My Cask Script&#34;&gt;original cask script&lt;/a&gt; for installing the software needed on
+multiple Mac workstations. The new version now allows you to configure parameters of
+the installation such as install path and which category of applications you
+wish to install.&lt;/p&gt;
+
+&lt;p&gt;The point of this tool is to help me configure (or reconfigure) workstations as
+needed by removing the manual work of finding the applications I always use
+online, unpacking, and copying to applications folder. That process becomes a
+tedious task when working with dozens of pieces of software.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsumilang/casks-installer/fork&#34; title=&#34;Casks Installer Fork&#34;&gt;Fork it&lt;/a&gt; for your own use on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;Github&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h3 id=&#34;why-a-sudden-update:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Why a sudden update?&lt;/h3&gt;
+
+&lt;p&gt;A new version of OS X El Capitan is to be released very soon. I&amp;rsquo;ve always felt
+installing a fresh OS ran smoother than doing an upgrade. Maybe the scars are
+that deep from the days of going Windows 95 to 98? Idk.&lt;/p&gt;
+
+&lt;p&gt;Anyways, I&amp;rsquo;ll be doing a fresh install of El Capitan and I wanted to make sure
+my apps were in order since I&amp;rsquo;ve last used &lt;a href=&#34;http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/&#34; title=&#34;My Cask Script&#34;&gt;my cask script&lt;/a&gt;. The process of
+manually installing each app takes longer than the actual OS install.
+Furthermore, I don&amp;rsquo;t need all apps installed in one shot so I broke them up into
+installable category groups&amp;hellip; Something I have been itching to do since the
+original mockup.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-it-works:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;How it works&lt;/h3&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice a file called &lt;a href=&#34;https://github.com/rsumilang/casks-installer/blob/master/install.rb&#34; title=&#34;install.rb script&#34;&gt;&lt;code&gt;install.rb&lt;/code&gt;&lt;/a&gt; in the project root. This is the
+script you will interface with for installing (or uninstalling) applications.
+Applications are grouped by categories located in the &lt;a href=&#34;https://github.com/rsumilang/casks-installer/tree/master/category&#34; title=&#34;Casks Installer Categories&#34;&gt;&lt;code&gt;./category&lt;/code&gt;&lt;/a&gt; folder
+where you can add more or less.&lt;/p&gt;
+
+&lt;p&gt;You can get a list of configurable options by running the &lt;code&gt;-h&lt;/code&gt; help option.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -h&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;options:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Options&lt;/h3&gt;
+
+&lt;h4 id=&#34;appdir:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;appdir&lt;/h4&gt;
+
+&lt;p&gt;The default location cask uses for Application shortcuts is &lt;code&gt;~/Applications&lt;/code&gt;. I
+change this setting in my install command to point to &lt;code&gt;/Applications&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Default:&lt;/em&gt; &lt;code&gt;/Applications&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb --appdir=/Applications&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;category:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;category&lt;/h4&gt;
+
+&lt;p&gt;Name of the application category group to install (or uninstall). The category
+name should reference a file in the &lt;code&gt;./category/&lt;/code&gt; directory, excluding the file
+extension. If no category group is specified then all will be installed.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb --category=browsers&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;or:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;uninstall:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;uninstall&lt;/h4&gt;
+
+&lt;p&gt;This changes the default &lt;code&gt;install&lt;/code&gt; option to &lt;code&gt;uninstall&lt;/code&gt;. With this flag on you
+can uninstall a category group or uninstall everything. This option requires no additional arguments.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers --uninstall&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;or&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers -u&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;updates:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Updates&lt;/h3&gt;
+
+&lt;p&gt;Follow the &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub repository&lt;/a&gt; for updates and please add any feature
+requests to the &lt;a href=&#34;https://github.com/rsumilang/casks-installer/issues&#34; title=&#34;Casks Installer Issues&#34;&gt;project issues&lt;/a&gt;. I welcome pull requests :)&lt;/p&gt;
+
+&lt;h3 id=&#34;known-issues:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Known issues&lt;/h3&gt;
+
+&lt;p&gt;Unfortunately there is no way to specify the specific version of an app that you
+need. This hasn&amp;rsquo;t been much of an issue for me yet but I know it would be nice
+to have.&lt;/p&gt;
+
+&lt;h2 id=&#34;license:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This was created by &lt;a href=&#34;http://richardsumilang.com/&#34;&gt;Richard Sumilang&lt;/a&gt; and is
+licensed under the &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;CC BY-SA 3.0&lt;/a&gt;
+license. You are encouraged to fork this repository and make adjustments
+according to your preferences.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34; alt=&#34;Creative Commons License&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My cask script!</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</link>
+      <pubDate>Sun, 106 Aug 261000 10:10:10 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</guid>
+      <description>&lt;p&gt;Finally we get our own &lt;code&gt;apt-get&lt;/code&gt; like tool for Mac! Check out &lt;a href=&#34;http://caskroom.io/&#34; title=&#34;Homebrew cask&#34;&gt;cask&lt;/a&gt; if you
+haven&amp;rsquo;t already! Below is my personal script for my setup. Maybe I&amp;rsquo;ll move this
+to chef recipe for my mac one day? ;)&lt;/p&gt;
+
+&lt;p&gt;Note: The latest and greatest will be maintained on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Cask&#34; &gt;#!/bin/sh
+# Let&#39;s automate installing all our apps!
+#
+# Note: This will require homebrew and cask!
+# See: http://caskroom.io/
+#
+# Uninstall: Provide the --appdir when removing.
+#
+# @author Richard Sumilang &lt;me@richardsumilang.com&gt;
+INSTALL_CMD=&#34;brew cask install --appdir=/Applications&#34;
+
+###########################
+# Communication
+$INSTALL_CMD colloquy
+$INSTALL_CMD propane
+#$INSTALL_CMD skype
+
+
+
+###########################
+# Development
+$INSTALL_CMD atom
+$INSTALL_CMD charles
+$INSTALL_CMD filezilla
+$INSTALL_CMD gas-mask
+$INSTALL_CMD geektool
+$INSTALL_CMD intellij-idea
+$INSTALL_CMD robomongo
+$INSTALL_CMD sequel-pro
+$INSTALL_CMD sourcetree
+$INSTALL_CMD vagrant vagrant-bar
+$INSTALL_CMD virtualbox
+
+
+
+###########################
+# Enterprise
+#$INSTALL_CMD citrix-receiver
+
+
+
+###########################
+# Interwebs
+$INSTALL_CMD firefox
+$INSTALL_CMD google-chrome
+
+
+
+###########################
+# Media
+$INSTALL_CMD mediaelch
+$INSTALL_CMD miro-video-converter
+$INSTALL_CMD videospec
+$INSTALL_CMD vlc
+
+
+
+###########################
+# Music
+$INSTALL_CMD spotify
+
+
+
+###########################
+# Tools
+$INSTALL_CMD dropbox
+
+
+
+###########################
+# Utilities
+$INSTALL_CMD remote-desktop-connection
+$INSTALL_CMD unrarx
+$INSTALL_CMD transmission
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

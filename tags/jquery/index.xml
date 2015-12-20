@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jquery on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/jquery/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 50934 09:09:09 PST</updated>
+    
+    <item>
+      <title>Version 3</title>
+      <link>http://richardsumilang.com/etc/version-3/</link>
+      <pubDate>Sun, 96 Aug 50934 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/etc/version-3/</guid>
+      <description>
+
+&lt;p&gt;Rebuilt from the ground up, the new site is refined from the presentation to the
+source. The theme has been modernized to load faster and I created more ways to
+navigate the site so more data is easily accessible while keeping the idea of
+simplicity in mind.&lt;/p&gt;
+
+&lt;p&gt;However, the site is more than just a pretty face. As a DIY’er, I take pleasure
+in building something from the ground up. The previous versions were powered by
+Wordpress. It’s amongst the most popular blogging technologies but honestly
+maintaining it is a nightmare.&lt;/p&gt;
+
+&lt;p&gt;There are also more goals in mind with the new site that will encourage more
+postings and in effect be the personality.&lt;/p&gt;
+
+&lt;p&gt;I hope you enjoy what’s to come.&lt;/p&gt;
+
+&lt;h2 id=&#34;technologies:678a5ea35242eee10c4a011d0e563269&#34;&gt;Technologies&lt;/h2&gt;
+
+&lt;p&gt;The site is no longer powered by a backend technology that has to be coupled
+with a database. This made issues when trying to upgrade and keep up to date.
+Now we’re a fully statically generated site. This has a lot of benefits such as
+less server maintenance (virtually none) and much faster load times from the
+user experience.&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo:678a5ea35242eee10c4a011d0e563269&#34;&gt;Hugo&lt;/h3&gt;
+
+&lt;p&gt;This is the a new player to the top static site generators out there today. I
+initially tried porting over my site from Wordpress with Jekyll. It wasn’t as
+straight forward as I thought it would be. There were a few bumps on the road
+were taking away from my fire.&lt;/p&gt;
+
+&lt;p&gt;I ended up choosing Hugo because it was easy to get an example site up and
+running very quick. It doesn’t have all the bells and whistles that Jekyll might
+but I realized that I didn’t need them. There is also something to be said about
+Hugo’s speed. It’s a big deal when creating a new page because the generator has
+to rebuild just about every page. Being written in Go was a great idea.&lt;/p&gt;
+
+&lt;p&gt;A few things that I thought were really nice out of the box was the web server,
+sitemap generator, and RSS support. Not to mention the whole application is a
+single binary app.&lt;/p&gt;
+
+&lt;h3 id=&#34;xhtml:678a5ea35242eee10c4a011d0e563269&#34;&gt;XHTML&lt;/h3&gt;
+
+&lt;p&gt;This is mainly a matter of preference. It bothers me that you don’t have to
+close certain tags in HTML which is why I prefer XHTML. I like to keep some sort
+of sanity.&lt;/p&gt;
+
+&lt;p&gt;I cringe every time I think of how browsers must parse standard HTML. I think of
+the days when I was a fresh programmer at my first job and tasked with data
+mining from websites using PHP. Oh, we just went to a dark place didn’t we?&lt;/p&gt;
+
+&lt;h3 id=&#34;sass-susy-css3:678a5ea35242eee10c4a011d0e563269&#34;&gt;SASS + SUSY + CSS3&lt;/h3&gt;
+
+&lt;p&gt;This goes back to my DIY nature. I don’t like using pre-built frameworks like
+Twitter’ Bootstrap because it seems to be a lot of overkill for doing a few
+simple things. Sometimes you have to use so many CSS classes to achieve
+something and it feels dirty, similar to writing inline styles. I like running
+lean and mean, that’s always been my motto.&lt;/p&gt;
+
+&lt;h3 id=&#34;es6-babel:678a5ea35242eee10c4a011d0e563269&#34;&gt;ES6 + Babel&lt;/h3&gt;
+
+&lt;p&gt;Let’s face it, JavaScript sucks. We all know it. A lot of the time it doesn’t
+make sense which is probably why it’s so closely related to HTML. Nonetheless
+it’s a necessary evil. ES6 sucks a lot less by letting you regain some amount of
+sanity. Using Babel I can future proof my code and start using the technologies
+of tomorrow, today.&lt;/p&gt;
+
+&lt;h3 id=&#34;jquery:678a5ea35242eee10c4a011d0e563269&#34;&gt;jQuery&lt;/h3&gt;
+
+&lt;p&gt;Meh. Not much to say about jQuery. Let’s just move on.&lt;/p&gt;
+
+&lt;h3 id=&#34;handlebars:678a5ea35242eee10c4a011d0e563269&#34;&gt;Handlebars&lt;/h3&gt;
+
+&lt;p&gt;This is a fantastic client side library for building templates. I’m a huge fan.
+Not currently using it at the moment of this writing but it’s baked into the JS
+application ready to go. It will be used in future plans.&lt;/p&gt;
+
+&lt;h3 id=&#34;prismjs:678a5ea35242eee10c4a011d0e563269&#34;&gt;PrismJS&lt;/h3&gt;
+
+&lt;p&gt;The source code viewer you see throughout the site is using PrismJS. I have to
+give it two thumbs up. One for following standards and another for looking
+awesome. I just wish they had a better way of building custom packages. Oh well,
+beggars can’t be choosers.&lt;/p&gt;
+
+&lt;h2 id=&#34;services:678a5ea35242eee10c4a011d0e563269&#34;&gt;Services&lt;/h2&gt;
+
+&lt;p&gt;Now that this is a 100% static site, I need a few services to help with features
+needing a backend.&lt;/p&gt;
+
+&lt;h3 id=&#34;github:678a5ea35242eee10c4a011d0e563269&#34;&gt;GitHub&lt;/h3&gt;
+
+&lt;p&gt;GitHub just get’s it. Get it? Thanks to their static website hosting I don’t
+have to pay a dime or manage a server anymore. Instead I just create a repo and
+run my website off a branch. Having your SCM and website coupled together like
+this is very pleasant and makes for a simple deploy process.&lt;/p&gt;
+
+&lt;p&gt;Oh, and did I mention this site is now completely open source?&lt;/p&gt;
+
+&lt;h3 id=&#34;mailchimp:678a5ea35242eee10c4a011d0e563269&#34;&gt;Mailchimp&lt;/h3&gt;
+
+&lt;p&gt;Please signup to the newsletter if you want to stay up to date. I’m planning on
+doing only one newsletter a month if there is a decent amount of subscriptions.&lt;/p&gt;
+
+&lt;h2 id=&#34;dedicated-to-my-daughter:678a5ea35242eee10c4a011d0e563269&#34;&gt;Dedicated to my daughter&lt;/h2&gt;
+
+&lt;p&gt;This site is dedicated to my daughter, Eva. May all your dreams come true.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/etc/version-3/eva-misfit.jpeg&#34; class=&#34;center&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>jQuery CORS fix for IE8 and IE9</title>
+      <link>http://richardsumilang.com/programming/javascript/jquery/jquery-cors-fix-for-ie8-and-ie9/</link>
+      <pubDate>Sun, 66 Aug 200600 06:06:06 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/programming/javascript/jquery/jquery-cors-fix-for-ie8-and-ie9/</guid>
+      <description>&lt;p&gt;Who can blame jQuery for not wanting to support Internet Explorer? Despite
+whatever the reason, it doesn&amp;rsquo;t always make business sense and we must support
+it. I found this &lt;a href=&#34;https://github.com/jaubourg/ajaxHooks/blob/master/src/xdr.js&#34; title=&#34;XDR Patch&#34;&gt;piece of code&lt;/a&gt; that patches the issue with jQuery.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34; title=&#34;jQuery CORS IE8 and IE9 fix.&#34;&gt;if ( window.XDomainRequest ) {
+    jQuery.ajaxTransport(function( s ) {
+        if ( s.crossDomain &amp;amp;&amp;amp; s.async ) {
+            if ( s.timeout ) {
+                s.xdrTimeout = s.timeout;
+                delete s.timeout;
+            }
+            var xdr;
+            return {
+                send: function( _, complete ) {
+                    function callback( status, statusText, responses, responseHeaders ) {
+                        xdr.onload = xdr.onerror = xdr.ontimeout = jQuery.noop;
+                        xdr = undefined;
+                        complete( status, statusText, responses, responseHeaders );
+                    }
+                    xdr = new XDomainRequest();
+                    xdr.onload = function() {
+                        callback( 200, &#34;OK&#34;, { text: xdr.responseText }, &#34;Content-Type: &#34; + xdr.contentType );
+                    };
+                    xdr.onerror = function() {
+                        callback( 404, &#34;Not Found&#34; );
+                    };
+                    xdr.onprogress = jQuery.noop;
+                    xdr.ontimeout = function() {
+                        callback( 0, &#34;timeout&#34; );
+                    };
+                    xdr.timeout = s.xdrTimeout || Number.MAX_VALUE;
+                    xdr.open( s.type, s.url );
+                    xdr.send( ( s.hasContent &amp;amp;&amp;amp; s.data ) || null );
+                },
+                abort: function() {
+                    if ( xdr ) {
+                        xdr.onerror = jQuery.noop;
+                        xdr.abort();
+                    }
+                }
+            };
+        }
+    });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: This doesn&amp;rsquo;t work when using the &lt;code&gt;{async: false}&lt;/code&gt; option in jQuery methods.&lt;/p&gt;
+
+&lt;p&gt;Be sure to set the &lt;code&gt;{crossDomain: true}&lt;/code&gt; setting and you&amp;rsquo;re good to go.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Working with JavaScript templates using jQuery</title>
+      <link>http://richardsumilang.com/programming/javascript/working-with-javascript-templates-using-jquery/</link>
+      <pubDate>Sun, 46 Aug 10400 04:04:04 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/programming/javascript/working-with-javascript-templates-using-jquery/</guid>
+      <description>
+
+&lt;p&gt;I picked up this nifty way of templating HTML code for JavaScript while working
+at &lt;a href=&#34;http://www.monkeyquest.com&#34; title=&#34;MonkeyQuest&#34;&gt;Monkey Quest&lt;/a&gt; and haven&amp;rsquo;t looked back. The idea here is to separate your
+design from your code. This is particularly useful when you are adding content
+to your site after the initial rendering. Data can be fed in from a number of
+sources and added to a page using a template.&lt;/p&gt;
+
+&lt;p&gt;Creating an example the old fashion way using concatenation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;//Variables
+var title = &#34;Hello World&#34;;
+var excerpt = &#34;This is the world&#39;s shortest lorem ipsum. Jk.&#34;;
+
+// Template
+var template = &#34;&amp;lt;div style=&#39;article&#39;&amp;gt;&#34;;
+template += &#34;&amp;lt;h1&amp;gt;&#34; + title + &#34;&amp;lt;/h1&amp;gt;&#34;;
+template += &#34;&amp;lt;div style=&#39;excerpt&#39;&amp;gt;&#34; + excerpt + &#34;&amp;lt;/div&amp;gt;&#34;;
+template += &#34;&amp;lt;/div&amp;gt;&#34;;
+
+// Append to &#34;foo&#34; element
+document.getElementById(&#34;foo&#34;).appendChild( template );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While this may work, it&amp;rsquo;s a nightmare to update your markup as it changes because it&amp;rsquo;s mixed in with your code and will eventually give you gray hairs.&lt;/p&gt;
+
+&lt;p&gt;Consider this piece of markup on your page for your template:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&#34;text/xhtml&#34; id=&#34;tmpl-foo&#34;&amp;gt;
+&amp;lt;div style=&#34;article&#34;&amp;gt;
+    &amp;lt;h1 /&amp;gt;
+    &amp;lt;div class=&#34;exerpt&#34; /&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s very easy to read right? The trick is setting the &lt;a href=&#34;http://www.iana.org/assignments/media-types/media-types.xhtml&#34; title=&#34;Media types&#34;&gt;script type&lt;/a&gt; to a
+value your browser doesn&amp;rsquo;t know how to render. Try to give it a meaningful mime
+type but anything that your browser doesn&amp;rsquo;t know how to render will work.&lt;/p&gt;
+
+&lt;p&gt;Now your JavaScript (sprinkled with a little jQuery) could look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// Variables
+var title = &#34;Hello World&#34;;
+var excerpt = &#34;This is the world&#39;s shortest lorem ipsum. Jk.&#34;;
+var template = $( $(&#34;tmpl-foo&#34;) );
+
+// Set variables in template
+template.find(&#34;h1&#34;).html( title );
+template.find(&#34;div.excerpt&#34;).html( excerpt );
+
+// Append to &#34;foo&#34; element
+$(&#34;#foo&#34;).append( template );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusion:73e399422ffb2670abb4a9b669117b61&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Some people also like to load templates externally by putting the code in a HTML
+file on the server and using jQuery&amp;rsquo;s &lt;code&gt;$.get&lt;/code&gt; method to pull it in as needed.
+There are also plugins for jQuery that simply do string replacements in your
+template string.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

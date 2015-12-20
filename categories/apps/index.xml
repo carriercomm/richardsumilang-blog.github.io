@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apps on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/categories/apps/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 200900 09:09:09 PST</updated>
+    
+    <item>
+      <title>Automate Your OS X App Installations</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/casks-installer-v1/</link>
+      <pubDate>Sun, 96 Aug 200900 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/casks-installer-v1/</guid>
+      <description>
+
+&lt;p&gt;I refined my &lt;a href=&#34;http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/&#34; title=&#34;My Cask Script&#34;&gt;original cask script&lt;/a&gt; for installing the software needed on
+multiple Mac workstations. The new version now allows you to configure parameters of
+the installation such as install path and which category of applications you
+wish to install.&lt;/p&gt;
+
+&lt;p&gt;The point of this tool is to help me configure (or reconfigure) workstations as
+needed by removing the manual work of finding the applications I always use
+online, unpacking, and copying to applications folder. That process becomes a
+tedious task when working with dozens of pieces of software.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsumilang/casks-installer/fork&#34; title=&#34;Casks Installer Fork&#34;&gt;Fork it&lt;/a&gt; for your own use on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;Github&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h3 id=&#34;why-a-sudden-update:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Why a sudden update?&lt;/h3&gt;
+
+&lt;p&gt;A new version of OS X El Capitan is to be released very soon. I&amp;rsquo;ve always felt
+installing a fresh OS ran smoother than doing an upgrade. Maybe the scars are
+that deep from the days of going Windows 95 to 98? Idk.&lt;/p&gt;
+
+&lt;p&gt;Anyways, I&amp;rsquo;ll be doing a fresh install of El Capitan and I wanted to make sure
+my apps were in order since I&amp;rsquo;ve last used &lt;a href=&#34;http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/&#34; title=&#34;My Cask Script&#34;&gt;my cask script&lt;/a&gt;. The process of
+manually installing each app takes longer than the actual OS install.
+Furthermore, I don&amp;rsquo;t need all apps installed in one shot so I broke them up into
+installable category groups&amp;hellip; Something I have been itching to do since the
+original mockup.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-it-works:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;How it works&lt;/h3&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice a file called &lt;a href=&#34;https://github.com/rsumilang/casks-installer/blob/master/install.rb&#34; title=&#34;install.rb script&#34;&gt;&lt;code&gt;install.rb&lt;/code&gt;&lt;/a&gt; in the project root. This is the
+script you will interface with for installing (or uninstalling) applications.
+Applications are grouped by categories located in the &lt;a href=&#34;https://github.com/rsumilang/casks-installer/tree/master/category&#34; title=&#34;Casks Installer Categories&#34;&gt;&lt;code&gt;./category&lt;/code&gt;&lt;/a&gt; folder
+where you can add more or less.&lt;/p&gt;
+
+&lt;p&gt;You can get a list of configurable options by running the &lt;code&gt;-h&lt;/code&gt; help option.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -h&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;options:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Options&lt;/h3&gt;
+
+&lt;h4 id=&#34;appdir:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;appdir&lt;/h4&gt;
+
+&lt;p&gt;The default location cask uses for Application shortcuts is &lt;code&gt;~/Applications&lt;/code&gt;. I
+change this setting in my install command to point to &lt;code&gt;/Applications&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Default:&lt;/em&gt; &lt;code&gt;/Applications&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb --appdir=/Applications&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;category:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;category&lt;/h4&gt;
+
+&lt;p&gt;Name of the application category group to install (or uninstall). The category
+name should reference a file in the &lt;code&gt;./category/&lt;/code&gt; directory, excluding the file
+extension. If no category group is specified then all will be installed.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb --category=browsers&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;or:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;uninstall:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;&amp;ndash;uninstall&lt;/h4&gt;
+
+&lt;p&gt;This changes the default &lt;code&gt;install&lt;/code&gt; option to &lt;code&gt;uninstall&lt;/code&gt;. With this flag on you
+can uninstall a category group or uninstall everything. This option requires no additional arguments.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers --uninstall&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;or&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby install.rb -c browsers -u&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;updates:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Updates&lt;/h3&gt;
+
+&lt;p&gt;Follow the &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub repository&lt;/a&gt; for updates and please add any feature
+requests to the &lt;a href=&#34;https://github.com/rsumilang/casks-installer/issues&#34; title=&#34;Casks Installer Issues&#34;&gt;project issues&lt;/a&gt;. I welcome pull requests :)&lt;/p&gt;
+
+&lt;h3 id=&#34;known-issues:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;Known issues&lt;/h3&gt;
+
+&lt;p&gt;Unfortunately there is no way to specify the specific version of an app that you
+need. This hasn&amp;rsquo;t been much of an issue for me yet but I know it would be nice
+to have.&lt;/p&gt;
+
+&lt;h2 id=&#34;license:5223ebddeabd2f99c3ab59f9e6384e13&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This was created by &lt;a href=&#34;http://richardsumilang.com/&#34;&gt;Richard Sumilang&lt;/a&gt; and is
+licensed under the &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;CC BY-SA 3.0&lt;/a&gt;
+license. You are encouraged to fork this repository and make adjustments
+according to your preferences.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34; alt=&#34;Creative Commons License&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configure iOS Mail App to respond with Gmail aliases</title>
+      <link>http://richardsumilang.com/apps/ios/mail/configure-ios-mail-to-respond-with-gmail-aliases/</link>
+      <pubDate>Sun, 16 Aug 80100 01:01:01 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/apps/ios/mail/configure-ios-mail-to-respond-with-gmail-aliases/</guid>
+      <description>&lt;p&gt;Assuming you have &lt;a href=&#34;https://support.google.com/a/answer/33327&#34; title=&#34;Aliases setup in Gmail&#34;&gt;aliases setup in Gmail&lt;/a&gt;, it&amp;rsquo;s fairly easy to configure the
+Mail application on iOS to respond to the emails using the correct alias.&lt;/p&gt;
+
+&lt;p&gt;The trick here is to setup your Gmail account as an IMAP account. Do not set it
+up by selecting &lt;strong&gt;Google&lt;/strong&gt; in the add account screen. Choose &lt;strong&gt;Other&lt;/strong&gt; and apply
+the &lt;a href=&#34;https://support.google.com/mail/troubleshooter/1668960&#34; title=&#34;Configure IMAP and POP3&#34;&gt;IMAP settings&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, to configure your aliases, simply go back into your account settings in
+the &lt;strong&gt;Mail, Contacts, Calendars&lt;/strong&gt; in the &lt;strong&gt;Settings&lt;/strong&gt; app, click &lt;strong&gt;Account&lt;/strong&gt;,
+then &lt;strong&gt;Email&lt;/strong&gt;, and &lt;strong&gt;Add Another Email&amp;hellip;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;You are done once you save your changes and now the Mail app should reply using
+the correct alias depending on which account received the email.&lt;/p&gt;
+
+&lt;p&gt;You may also find it useful to &lt;a href=&#34;http://richardsumilang.com/apps/osx/mail/configure-mac-os-x-mail-app-to-respond-with-gmail-aliases/&#34;&gt;configure your OS X&lt;/a&gt;
+desktop the same way.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configure Mac OS X Mail App to respond with Gmail aliases</title>
+      <link>http://richardsumilang.com/apps/osx/mail/configure-mac-os-x-mail-app-to-respond-with-gmail-aliases/</link>
+      <pubDate>Sun, 16 Aug 80100 01:01:01 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/apps/osx/mail/configure-mac-os-x-mail-app-to-respond-with-gmail-aliases/</guid>
+      <description>&lt;p&gt;Assuming you have &lt;a href=&#34;https://support.google.com/a/answer/33327&#34; title=&#34;Aliases setup in Gmail&#34;&gt;aliases setup in Gmail&lt;/a&gt;, it&amp;rsquo;s fairly easy to configure the
+Mail application on OS X to respond to the emails using the appropriate alias.&lt;/p&gt;
+
+&lt;p&gt;If you haven&amp;rsquo;t already, &lt;a href=&#34;https://support.google.com/mail/troubleshooter/1668960&#34; title=&#34;Configure IMAP and POP3&#34;&gt;configure your Mail app&lt;/a&gt; to your gmail account.&lt;/p&gt;
+
+&lt;p&gt;Finally, to configure your aliases, go back into your account settings in the
+Mail app and comma separate each alias under the &lt;strong&gt;Email Address:&lt;/strong&gt; field. It&amp;rsquo;s
+far from obvious but a tooltip will appear after a moment which reads:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Enter one or more email addresses, separated by comma.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You may also find it useful to (configure your iOS)[/apps/ios/mail/configure-ios-mail-to-respond-with-gmail-aliases/)
+device the same way.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tidying up your security with a Password Manager</title>
+      <link>http://richardsumilang.com/apps/security/tidying-up-your-security-with-a-password-manager/</link>
+      <pubDate>Sun, 116 Aug 111100 11:11:11 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/apps/security/tidying-up-your-security-with-a-password-manager/</guid>
+      <description>
+
+&lt;p&gt;Using a password manager adds numerous of security benefits. The key feature
+being strong unique passwords for each application you use. Two of the most
+popular password managers are &lt;a href=&#34;http://lastpass.com/&#34; title=&#34;LastPass&#34;&gt;LastPass&lt;/a&gt; and &lt;a href=&#34;https://agilebits.com/onepassword&#34; title=&#34;1Password&#34;&gt;1Password&lt;/a&gt;. The main
+difference is LastPass syncs to all your devices by storing your vault on their
+servers. 1Password syncs to all your devices via Dropbox and does not save your
+vault to any other servers. They are both good and whichever you choose to use
+will be up to you.&lt;/p&gt;
+
+&lt;p&gt;After importing all your passwords to the password manager of your choice, you
+should remove any traces of them from your browsers. Below are links to help you
+do that for each browser.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Firefox: &lt;a href=&#34;https://support.mozilla.org/en-US/kb/password-manager-remember-delete-change-passwords#w_viewing-and-deleting-passwords&#34; title=&#34;Delete passwords from Firefox&#34;&gt;Viewing and deleting passwords.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Chrome: &lt;a href=&#34;https://support.google.com/chrome/answer/95606?hl=en&#34; title=&#34;Manage your website passwords in Chrome&#34;&gt;Manage your website passwords.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Safari: &lt;a href=&#34;https://discussions.apple.com/thread/4458882?tstart=0&#34;&gt;How to delete saved passwords in Safari.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Chrome: Uncheck &amp;ldquo;Offer to save your web passwords.&amp;rdquo; in your Preferences to
+have it stop asking.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;multifactor-authentication:aaefa93093e01650172de1bca17a7451&#34;&gt;Multifactor Authentication&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s a wise choice to enable a second authentication step to access your
+account. This is especially helpful if you work on a shared computer or on a
+company owned device. It not only helps you protect your accounts but your
+company&amp;rsquo;s as well. Read more about &lt;a href=&#34;https://helpdesk.lastpass.com/security-options/multifactor-authentication-options/&#34; title=&#34;LastPass multifactor options&#34;&gt;LastPass multifactor options&lt;/a&gt; and
+&lt;a href=&#34;https://blog.agilebits.com/2011/09/23/two-factor-or-not-two-factor/&#34; title=&#34;1Password two factor authentication&#34;&gt;1Password&lt;/a&gt;, two factor or not two factor&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My cask script!</title>
+      <link>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</link>
+      <pubDate>Sun, 106 Aug 261000 10:10:10 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/unix-like/darwin/cask/my-cask-script/</guid>
+      <description>&lt;p&gt;Finally we get our own &lt;code&gt;apt-get&lt;/code&gt; like tool for Mac! Check out &lt;a href=&#34;http://caskroom.io/&#34; title=&#34;Homebrew cask&#34;&gt;cask&lt;/a&gt; if you
+haven&amp;rsquo;t already! Below is my personal script for my setup. Maybe I&amp;rsquo;ll move this
+to chef recipe for my mac one day? ;)&lt;/p&gt;
+
+&lt;p&gt;Note: The latest and greatest will be maintained on &lt;a href=&#34;https://github.com/rsumilang/casks-installer&#34; title=&#34;Casks Installer&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34; title=&#34;Cask&#34; &gt;#!/bin/sh
+# Let&#39;s automate installing all our apps!
+#
+# Note: This will require homebrew and cask!
+# See: http://caskroom.io/
+#
+# Uninstall: Provide the --appdir when removing.
+#
+# @author Richard Sumilang &lt;me@richardsumilang.com&gt;
+INSTALL_CMD=&#34;brew cask install --appdir=/Applications&#34;
+
+###########################
+# Communication
+$INSTALL_CMD colloquy
+$INSTALL_CMD propane
+#$INSTALL_CMD skype
+
+
+
+###########################
+# Development
+$INSTALL_CMD atom
+$INSTALL_CMD charles
+$INSTALL_CMD filezilla
+$INSTALL_CMD gas-mask
+$INSTALL_CMD geektool
+$INSTALL_CMD intellij-idea
+$INSTALL_CMD robomongo
+$INSTALL_CMD sequel-pro
+$INSTALL_CMD sourcetree
+$INSTALL_CMD vagrant vagrant-bar
+$INSTALL_CMD virtualbox
+
+
+
+###########################
+# Enterprise
+#$INSTALL_CMD citrix-receiver
+
+
+
+###########################
+# Interwebs
+$INSTALL_CMD firefox
+$INSTALL_CMD google-chrome
+
+
+
+###########################
+# Media
+$INSTALL_CMD mediaelch
+$INSTALL_CMD miro-video-converter
+$INSTALL_CMD videospec
+$INSTALL_CMD vlc
+
+
+
+###########################
+# Music
+$INSTALL_CMD spotify
+
+
+
+###########################
+# Tools
+$INSTALL_CMD dropbox
+
+
+
+###########################
+# Utilities
+$INSTALL_CMD remote-desktop-connection
+$INSTALL_CMD unrarx
+$INSTALL_CMD transmission
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to clean and optimize your Aperture Library</title>
+      <link>http://richardsumilang.com/apps/osx/photo/aperture/clean-and-optimize-your-aperture-library/</link>
+      <pubDate>Sun, 76 Aug 130701 07:07:07 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/apps/osx/photo/aperture/clean-and-optimize-your-aperture-library/</guid>
+      <description>
+
+&lt;p&gt;After time you will notice your Aperture Library growing ridiculously big. Here
+a are few tips to shrink it back down and keep it optimal.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-keep-master-files-out-of-the-aperture-library:fcffe46b275f0f51e8fbd34d869b35f6&#34;&gt;1. Keep master files out of the Aperture Library&lt;/h3&gt;
+
+&lt;p&gt;I strongly encourage this as it makes your Aperture Library much easier to
+manage and keeps free space on your workstation for more important things. I
+work in a 250gb SSD drive and space is important. Keep your masters on an
+external drive or network attached storage and only import them locally while
+you&amp;rsquo;re working on them. Adobe Lightroom gets this and actually never puts your
+masters in the Aperture Library. Or as they call it, catalog.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-create-a-aperture-library-for-different-projects:fcffe46b275f0f51e8fbd34d869b35f6&#34;&gt;2. Create a Aperture Library for different projects&lt;/h3&gt;
+
+&lt;p&gt;This will keep your libraries small and efficient. This is especially nifty if
+you work on a laptop with limited space. Imagine going on a trip to take photos.
+You don&amp;rsquo;t need to carry your whole Aperture Library with you. You want as much
+space possible to take as many photos as you need. You can, if needed, merge
+your Aperture Library into another &amp;ldquo;master&amp;rdquo; Aperture Library to consolidate
+everything in the future.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-trash-your-thumbnails:fcffe46b275f0f51e8fbd34d869b35f6&#34;&gt;3. Trash your thumbnails&lt;/h3&gt;
+
+&lt;p&gt;Some might be stale anyways and it&amp;rsquo;s nice to get rid of excess. Aperture will
+regenerate what it needs when you access it. Pop open a terminal and run these
+commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;find ~/Pictures -name &#34;AP.Thumbnails&#34; -delete
+find ~/Pictures -name &#34;AP.Minis&#34; -delete
+find ~/Pictures -name &#34;AP.Tinies&#34; -delete&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That saved me about 10 gigabytes. Your mileage may very.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-rebuild-your-database:fcffe46b275f0f51e8fbd34d869b35f6&#34;&gt;4. Rebuild your database&lt;/h3&gt;
+
+&lt;p&gt;Hold &lt;code&gt;option + command&lt;/code&gt; on your keyboard while opening Aperture. This will bring
+up the &lt;em&gt;Photo Library First Aid&lt;/em&gt; dialog. Click &lt;em&gt;Rebuild Database&lt;/em&gt; then &lt;em&gt;Rebuild&lt;/em&gt;
+button.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA Optimizations</title>
+      <link>http://richardsumilang.com/apps/ide/intellij/intellij-idea-optimizations/</link>
+      <pubDate>Sun, 56 Aug 60500 05:05:05 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/apps/ide/intellij/intellij-idea-optimizations/</guid>
+      <description>&lt;p&gt;Please post a comment if you have any additional tips to making IDEA faster.&lt;/p&gt;
+
+&lt;p&gt;1) The first thing you want to do is disable all the plugins you are not using.
+Go to &lt;em&gt;Preferences&amp;amp; -&amp;gt; *Plugins&lt;/em&gt; and un-check as many as possible. I
+unchecked about 80%.&lt;/p&gt;
+
+&lt;p&gt;2) Give yourself more memory. I figure if Firefox allows itself to take a gig of
+my ram then I should treat my IDE a little better. So, I gave it two. Find your
+&lt;code&gt;idea.vmpoptions&lt;/code&gt; file (on Mac you can &amp;ldquo;right&amp;rdquo; click the IntelliJ IDEA app icon,
+click &lt;code&gt;Show Package Contents&lt;/code&gt; and look in the &lt;code&gt;bin&lt;/code&gt; folder.) and tweak start-up
+settings like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34; title=&#34;idea.vmoptions&#34; &gt;-Xms512m
+-Xmx2048m
+-XX:MaxPermSize=512m
+-XX:ReservedCodeCacheSize=256m
+-XX:+UseCompressedOops
+-DlocalHistory.daysToKeep=1&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.1) You might notice the last setting on there is a local history setting. I do
+a pretty good job at committing anything useful to my version control system, so
+I keep that at a minimum. Part of me wants to completely remove the local
+history feature but it doesn&amp;rsquo;t cost me much to keep it around so I keep it at
+just a day. You can change that or remove the setting to keep the default.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

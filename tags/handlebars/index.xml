@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Handlebars on Top Secret Labs - Richard Sumilang </title>
+    <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://richardsumilang.com/tags/handlebars/</link>
+    <language>en-us</language>
+    <author>Richard Sumilang</author>
+    
+    <updated>Sun, 96 Aug 50934 09:09:09 PST</updated>
+    
+    <item>
+      <title>Version 3</title>
+      <link>http://richardsumilang.com/etc/version-3/</link>
+      <pubDate>Sun, 96 Aug 50934 09:09:09 PST</pubDate>
+      <author>Richard Sumilang</author>
+      <guid>http://richardsumilang.com/etc/version-3/</guid>
+      <description>
+
+&lt;p&gt;Rebuilt from the ground up, the new site is refined from the presentation to the
+source. The theme has been modernized to load faster and I created more ways to
+navigate the site so more data is easily accessible while keeping the idea of
+simplicity in mind.&lt;/p&gt;
+
+&lt;p&gt;However, the site is more than just a pretty face. As a DIY’er, I take pleasure
+in building something from the ground up. The previous versions were powered by
+Wordpress. It’s amongst the most popular blogging technologies but honestly
+maintaining it is a nightmare.&lt;/p&gt;
+
+&lt;p&gt;There are also more goals in mind with the new site that will encourage more
+postings and in effect be the personality.&lt;/p&gt;
+
+&lt;p&gt;I hope you enjoy what’s to come.&lt;/p&gt;
+
+&lt;h2 id=&#34;technologies:678a5ea35242eee10c4a011d0e563269&#34;&gt;Technologies&lt;/h2&gt;
+
+&lt;p&gt;The site is no longer powered by a backend technology that has to be coupled
+with a database. This made issues when trying to upgrade and keep up to date.
+Now we’re a fully statically generated site. This has a lot of benefits such as
+less server maintenance (virtually none) and much faster load times from the
+user experience.&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo:678a5ea35242eee10c4a011d0e563269&#34;&gt;Hugo&lt;/h3&gt;
+
+&lt;p&gt;This is the a new player to the top static site generators out there today. I
+initially tried porting over my site from Wordpress with Jekyll. It wasn’t as
+straight forward as I thought it would be. There were a few bumps on the road
+were taking away from my fire.&lt;/p&gt;
+
+&lt;p&gt;I ended up choosing Hugo because it was easy to get an example site up and
+running very quick. It doesn’t have all the bells and whistles that Jekyll might
+but I realized that I didn’t need them. There is also something to be said about
+Hugo’s speed. It’s a big deal when creating a new page because the generator has
+to rebuild just about every page. Being written in Go was a great idea.&lt;/p&gt;
+
+&lt;p&gt;A few things that I thought were really nice out of the box was the web server,
+sitemap generator, and RSS support. Not to mention the whole application is a
+single binary app.&lt;/p&gt;
+
+&lt;h3 id=&#34;xhtml:678a5ea35242eee10c4a011d0e563269&#34;&gt;XHTML&lt;/h3&gt;
+
+&lt;p&gt;This is mainly a matter of preference. It bothers me that you don’t have to
+close certain tags in HTML which is why I prefer XHTML. I like to keep some sort
+of sanity.&lt;/p&gt;
+
+&lt;p&gt;I cringe every time I think of how browsers must parse standard HTML. I think of
+the days when I was a fresh programmer at my first job and tasked with data
+mining from websites using PHP. Oh, we just went to a dark place didn’t we?&lt;/p&gt;
+
+&lt;h3 id=&#34;sass-susy-css3:678a5ea35242eee10c4a011d0e563269&#34;&gt;SASS + SUSY + CSS3&lt;/h3&gt;
+
+&lt;p&gt;This goes back to my DIY nature. I don’t like using pre-built frameworks like
+Twitter’ Bootstrap because it seems to be a lot of overkill for doing a few
+simple things. Sometimes you have to use so many CSS classes to achieve
+something and it feels dirty, similar to writing inline styles. I like running
+lean and mean, that’s always been my motto.&lt;/p&gt;
+
+&lt;h3 id=&#34;es6-babel:678a5ea35242eee10c4a011d0e563269&#34;&gt;ES6 + Babel&lt;/h3&gt;
+
+&lt;p&gt;Let’s face it, JavaScript sucks. We all know it. A lot of the time it doesn’t
+make sense which is probably why it’s so closely related to HTML. Nonetheless
+it’s a necessary evil. ES6 sucks a lot less by letting you regain some amount of
+sanity. Using Babel I can future proof my code and start using the technologies
+of tomorrow, today.&lt;/p&gt;
+
+&lt;h3 id=&#34;jquery:678a5ea35242eee10c4a011d0e563269&#34;&gt;jQuery&lt;/h3&gt;
+
+&lt;p&gt;Meh. Not much to say about jQuery. Let’s just move on.&lt;/p&gt;
+
+&lt;h3 id=&#34;handlebars:678a5ea35242eee10c4a011d0e563269&#34;&gt;Handlebars&lt;/h3&gt;
+
+&lt;p&gt;This is a fantastic client side library for building templates. I’m a huge fan.
+Not currently using it at the moment of this writing but it’s baked into the JS
+application ready to go. It will be used in future plans.&lt;/p&gt;
+
+&lt;h3 id=&#34;prismjs:678a5ea35242eee10c4a011d0e563269&#34;&gt;PrismJS&lt;/h3&gt;
+
+&lt;p&gt;The source code viewer you see throughout the site is using PrismJS. I have to
+give it two thumbs up. One for following standards and another for looking
+awesome. I just wish they had a better way of building custom packages. Oh well,
+beggars can’t be choosers.&lt;/p&gt;
+
+&lt;h2 id=&#34;services:678a5ea35242eee10c4a011d0e563269&#34;&gt;Services&lt;/h2&gt;
+
+&lt;p&gt;Now that this is a 100% static site, I need a few services to help with features
+needing a backend.&lt;/p&gt;
+
+&lt;h3 id=&#34;github:678a5ea35242eee10c4a011d0e563269&#34;&gt;GitHub&lt;/h3&gt;
+
+&lt;p&gt;GitHub just get’s it. Get it? Thanks to their static website hosting I don’t
+have to pay a dime or manage a server anymore. Instead I just create a repo and
+run my website off a branch. Having your SCM and website coupled together like
+this is very pleasant and makes for a simple deploy process.&lt;/p&gt;
+
+&lt;p&gt;Oh, and did I mention this site is now completely open source?&lt;/p&gt;
+
+&lt;h3 id=&#34;mailchimp:678a5ea35242eee10c4a011d0e563269&#34;&gt;Mailchimp&lt;/h3&gt;
+
+&lt;p&gt;Please signup to the newsletter if you want to stay up to date. I’m planning on
+doing only one newsletter a month if there is a decent amount of subscriptions.&lt;/p&gt;
+
+&lt;h2 id=&#34;dedicated-to-my-daughter:678a5ea35242eee10c4a011d0e563269&#34;&gt;Dedicated to my daughter&lt;/h2&gt;
+
+&lt;p&gt;This site is dedicated to my daughter, Eva. May all your dreams come true.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://richardsumilang.com/images/etc/version-3/eva-misfit.jpeg&#34; class=&#34;center&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
